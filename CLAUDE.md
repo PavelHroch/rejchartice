@@ -27,7 +27,7 @@ Každý nástroj má vlastní podsložku (statická HTML stránka + JSON data, b
   - `smer_otevirani`: `"dovnitr"`/`"ven"` — vykreslí se jako řádek "OTEVÍRAVÉ DOVNITŘ/VEN"
     (červeně zvýrazněné, když je "ven").
   - `bezprahove` (bool) → blok "Prah" = "Bez prahu". `zamek` (bool) → blok "Zámek" = "Ano".
-  - doplňky: `bezpecnostni_sklo`, `sit_fix`, `sit_otevirani`, `venk_zaluzie`,
+  - doplňky: `bezpecnostni_sklo`, `sit_fix`, `sit_otevirani`, `venk_zaluzie`, `rolety`, `rolety_priprava`,
     `venk_zaluzie_priprava`, `purenit_cm`, `levnejsi_profil`, `poznamka`.
   - `mistnosti` a `strana_domu` — pomocné rozpady počtu (sklep/přízemí/patro, levá/pravá
     strana); `mistnosti` se vypíše jen jako název (bez počtu, dům má jedno patro/přízemí/sklep),
@@ -257,3 +257,85 @@ tagem, který CORS omezení nepodléhá.
   verification failed"). Uživatel vědomě souhlasil se zveřejněním kontaktu investora.
   Obě stránky mají `<meta name="robots" content="noindex, nofollow">` — `robots.txt` v
   podsložce projektu by vyhledávače ignorovaly (čtou ho jen z kořene domény).
+- 2026-10-02 — O11 (Fix, dřív 2 ks) rozdělen na O11a a O11b (po 1 ks, stejné číslo přes
+  `rozdeleno`/`stejne_cislo_jako_predchozi`, jako O7a/O7b). O11a má poznámku "přidat
+  rozšiřovací profil 100 mm nad oknem" a `rozsirovaci_profil_mm: { boky: 0, nahore: 100 }`.
+  `buildDrawing()` v `app.js` teď u profilu bez boků kreslí jen červený čárkovaný pruh nad
+  rámem (min. 10 px vysoký) s popiskem "rozšiř. profil X mm" a značka překladu se posune
+  nad tento pruh; D16 (boky + nahoře) se kreslí beze změny. Lokální náhled:
+  `.claude/launch.json` (`python3 -m http.server 8058`).
+- 2026-10-02 — Barva rámu/křídla/parapetů/rámu sítě změněna z "Antracitgrau glatt" na
+  "Woodec oat" (`data.meta.materialy`, čtvereček `#c8ad85` — přibližný odstín, ne oficiální
+  hex). Rám v SVG nákresech zůstal tmavý `#33383d` kvůli čitelnosti (už neodpovídá barvě).
+- 2026-10-02 — Nad přehled materiálů přidán náhled dekoru rámů (`data.meta.dekor: { nazev,
+  obrazek }`, `renderDecor()` v `app.js`, `.decor` v CSS) — fotka textury Woodec oat
+  v `okna-dvere/img/woodec-oat.jpg` (zmenšeno na 640 px). Materiály s polem `obrazek`
+  mají místo plné barvy čtvereček s texturou.
+- 2026-10-02 — S12 (OS1) křídla rozdělena nesymetricky 1000 + 600 mm (dřív 800 + 800),
+  širší je levé křídlo (1. v pořadí).
+- 2026-10-02 — S12 (OS1) zrcadlově otočeno: pravé (`strana_domu: { pravy: 1 }`, dřív levé),
+  křídla 600 + 1000 mm (širší je teď pravé křídlo).
+- 2026-10-02 — Dekor předělán na seznam `data.meta.dekory[]` (`{ nazev, obrazek }`, obrázky
+  v `okna-dvere/img/`): nadpis "Dekor rámů" je nad náhledy, pod každým obrázkem jen název.
+  Další dekor = přidat položku do pole + obrázek do `img/`.
+- 2026-10-02 — Do 4. sloupce karty přidán blok **Rolety** (Komplet/Příprava) mezi Žaluzie
+  a Sítě — nová pole `rolety` a `rolety_priprava` (počet ks), zatím nevyplněná nikde, takže
+  všude "-----". Přidány i filtry "Rolety" a "Příprava rolety" (zatím 0).
+- 2026-10-02 — `data.meta.dekory` je teď seznam skupin `{ nadpis, polozky[] }` vykreslených
+  vedle sebe: "Dekor rámů" (textura Woodec oat) a nová "Dekor foto" (fotka vzorku rámu,
+  `img/woodec-oat-foto.jpg`, položka s `foto: true` = vyšší náhled bez popisku). Klik na
+  obrázek ho otevře v plné velikosti.
+- 2026-10-02 — Do `data.meta.dekory` přidána skupina "Kliky okna" (fotka kliky,
+  `img/kliky-okna.jpg`).
+- 2026-10-02 — Přidána skupina "Kliky dveře" (`img/kliky-dvere.jpg`, Vekra Stuttgart Q
+  bronz). Obrázky v hlavičce se po kliknutí otevřou přes celou obrazovku (`openLightbox()`
+  v `app.js`, `.lightbox` v CSS) — zavírá se křížkem vpravo nahoře, klávesou Esc nebo
+  kliknutím mimo obrázek. Všechny obrázky v `img/` přeexportovány na 1400 px (kvůli ostrosti
+  na celé obrazovce).
+- 2026-10-02 — Nákres vchodových dveří D16–D18 (`drawSolidDoorLeaf()` v `app.js`) předělán
+  podle fotky vzoru: nahoře dvě svislá matná skla vedle sebe (~46 % výšky křídla), dole plná
+  kazeta s ozdobným dvojitým čtvercem uprostřed, klika (bronzový štítek) na straně proti
+  pantům ve spodní části prosklení. Dřívější rozdělení 2/3 plech + 1/3 prosklený pruh zrušeno.
+- 2026-10-02 — Pole `rolety` a `rolety_priprava` doplněna ke všem 20 položkám v `data.js`
+  (hodnota 0 = "-----"), hned pod `pocet`, aby se daly ručně upravit.
+- 2026-10-02 — V `data.js` má teď každá položka všechny čtyři řádky `venk_zaluzie`,
+  `venk_zaluzie_priprava`, `rolety`, `rolety_priprava` pohromadě (rolety hned pod žaluziemi),
+  i když je hodnota 0 — kvůli snadné ruční úpravě.
+- 2026-10-02 — Prohozeno pořadí v `okna[]`: Fix (interní `O11a`/`O11b`) je teď hned za O1 a
+  zobrazuje se jako O2a/O2b, "Dvojité Nižší" (interní `O2`) je na konci jako O11. Interní `id`
+  zůstala beze změny (zobrazovaná čísla se počítají z pořadí).
+- 2026-10-02 — Prohozeno pořadí O3 ↔ O4: "Dvojité Menší Nižší" (interní `O4`) je teď O3,
+  "Dvojité Menší Vyšší - Přístavba" (interní `O3`) je O4.
+- 2026-10-02 — Prohozeno pořadí O10 ↔ O11: "Dvojité Nižší" (interní `O2`) je teď O10,
+  "Podkroví" (interní `O10`) je poslední jako O11.
+- 2026-10-02 — "Koupelnové" (interní `O9`) přesunuto před balkonové O7a/O7b — je teď O7,
+  balkonové se posunuly na O8a/O8b a O9 (Balkonové dvojité M).
+- 2026-10-02 — "Dvojité Nižší" (interní `O2`) přesunuto před O5 — je teď O5, ostatní se
+  posunuly o jedno dál až po O10 (Balkonové dvojité M); Podkroví zůstává O11.
+- 2026-10-02 — Prohozeno O1 ↔ O2: Fix (interní `O11a`/`O11b`) je teď O1a/O1b, "Dvojité
+  Vyšší" (interní `O1`) je O2.
+- 2026-10-02 — Balkonové dvojité V (interní `O7a`/`O7b`, byly O9a/O9b) přesunuty na O2a/O2b,
+  ostatní okna posunuta o jedno dál (Dvojité Vyšší je O3 … Balkonové dvojité M O10,
+  Podkroví O11).
+- 2026-10-02 — Interní `id` v `data.js` přepsána, aby odpovídala zobrazovaným číslům
+  (O1a, O1b, O2a, O2b, O3…O11, S12…S15, D16…D18). Pozor: zobrazované číslo se dál počítá
+  z pořadí (`assignDisplayIds()`), takže po dalším přesunu položek se `id` v datech zase
+  rozejde se stránkou — je potřeba je přepsat znovu. Starší zápisy v logu používají stará
+  interní id (např. `OS1`, `O11a`, `D1`).
+- 2026-10-02 — O3–O9 mají vnitřní parapet 300 mm (`vnitrni_parapet_mm: 300`, hned pod
+  `parapet_mm`) — sloupec Parapet teď u nich píše "Vnitřní - 300 mm" a filtr Vnitřní parapet
+  ukazuje 16 (počítá kusy, ne položky).
+- 2026-10-02 — Do `data.meta.materialy` přidána "Barva rolety: Bílá" (před parapety).
+- 2026-10-02 — Bloky Žaluzie / Rolety / Sítě: když položka nemá ani jednu variantu (obě
+  hodnoty 0), píše se pod nadpisem jen jeden řádek "-----" místo "Komplet - -----" /
+  "Příprava - -----" (`countBlock()` v `app.js`).
+- 2026-10-02 — Nevyplněné hodnoty v kartách (text končící "-----", např. "Výška - -----",
+  "Komplet - -----") se vykreslují světlejší šedou a ne tučně (`line()` přidá třídu
+  `is-empty`, styl `.col-value.is-empty` / `.col-value-sm.is-empty` v CSS).
+- 2026-10-02 — Nevyplněné řádky se navíc píšou bez popisku — místo "Komplet - -----" /
+  "Výška - -----" jen "-----" (v `line()` v `app.js`).
+- 2026-10-02 — Pod nadpisy bloků v kartách (Parapet, Prah, Žaluzie, Rolety, Sítě…) přidána
+  mezera `margin-bottom: 5px` (`.col-label` ve `style.css`).
+- 2026-10-02 — Blok Parapet: výška 0 mm se bere jako žádný parapet ("-----"), a když nejsou
+  vyplněné žádné řádky bloku (Výška/Vnitřní/Venkovní), píše se jen jedno "-----" — obecně
+  ve `fieldBlockLines()`, platí pro všechny víceřádkové bloky.

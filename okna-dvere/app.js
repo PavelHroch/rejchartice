@@ -41,6 +41,8 @@ const FILTERS = [
   { key: "sit_otevirani", label: "Síť otevírací", match: (it) => !!it.sit_otevirani },
   { key: "zaluzie", label: "Venkovní žaluzie", match: (it) => !!it.venk_zaluzie },
   { key: "zaluzie_priprava", label: "Příprava žaluzie", match: (it) => !!it.venk_zaluzie_priprava },
+  { key: "rolety", label: "Rolety", match: (it) => !!it.rolety },
+  { key: "rolety_priprava", label: "Příprava rolety", match: (it) => !!it.rolety_priprava },
   { key: "standard_profil", label: "Standardní profil", match: (it) => !it.levnejsi_profil },
   { key: "levnejsi_profil", label: "Levnější profil", match: (it) => !!it.levnejsi_profil },
   { key: "bezpecnostni_sklo", label: "Bezpečnostní sklo", match: (it) => !!it.bezpecnostni_sklo },
@@ -90,27 +92,42 @@ function text(x, y, str, cls, extra) {
   return t;
 }
 
-// plný dveřní panel (vchodové dveře D1–D3): tmavý plech s dekorativním zigzag pruhem,
+// vchodové dveře (`plny_panel`): křídlo se dvěma matnými skly nahoře a kazetou dole,
 // klikou na straně proti pantům a značkami pantů — místo prosklení jako u oken
 function drawSolidDoorLeaf(svg, x, y, w, h, otevirani) {
   const hinge = otevirani && otevirani.endsWith("-L") ? "L" : "P";
 
-  // 2/3 plný panel + 1/3 prosklený pruh při straně pantů
-  const glassW = w / 3;
-  const solidW = w - glassW;
-  const solidX = hinge === "P" ? x : x + glassW;
-  const glassX = hinge === "P" ? x + solidW : x;
+  // křídlo: nahoře dvě svislá matná skla vedle sebe, dole plný kazetový panel s ozdobným čtvercem
+  svg.appendChild(el("rect", { x, y, width: w, height: h, fill: "#4a4f56", stroke: "#2b2f34", "stroke-width": 1 }));
 
-  svg.appendChild(el("rect", { x: solidX, y, width: solidW, height: h, fill: "#4a4f56", stroke: "#2b2f34", "stroke-width": 1 }));
+  const side = w * 0.11;
+  const gap = w * 0.1;
+  const glassY = y + h * 0.06;
+  const glassH = h * 0.46;
+  const paneW = (w - side * 2 - gap) / 2;
+  [x + side, x + side + paneW + gap].forEach((px) => {
+    svg.appendChild(el("rect", { x: px, y: glassY, width: paneW, height: glassH, fill: "#dde3e3", stroke: "#a9b3b3", "stroke-width": 1 }));
+  });
 
-  // klika na straně proti pantům (vnější okraj plného panelu)
-  const handleX = hinge === "P" ? solidX + 6 : solidX + solidW - 10;
-  svg.appendChild(el("rect", { x: handleX, y: y + h / 2 - 6, width: 4, height: 12, rx: 2, fill: "#17181a" }));
+  // spodní kazeta + ozdobný vystouplý čtverec se zapuštěným středem
+  const panelX = x + side;
+  const panelW = w - side * 2;
+  const panelY = glassY + glassH + h * 0.05;
+  const panelH = y + h * 0.94 - panelY;
+  const deco = { stroke: "#6c7279", "stroke-width": 1, fill: "none" };
+  svg.appendChild(el("rect", Object.assign({ x: panelX, y: panelY, width: panelW, height: panelH }, deco)));
+  const dW = panelW * 0.5;
+  const dH = Math.min(panelH * 0.55, dW * 1.1);
+  const dX = panelX + (panelW - dW) / 2;
+  const dY = panelY + (panelH - dH) / 2;
+  svg.appendChild(el("rect", Object.assign({ x: dX, y: dY, width: dW, height: dH }, deco)));
+  svg.appendChild(el("rect", Object.assign({ x: dX + dW * 0.2, y: dY + dH * 0.2, width: dW * 0.6, height: dH * 0.6 }, deco)));
 
-  // prosklený pruh při straně pantů — matné sklo (jiná, matnější výplň než čiré okenní sklo)
-  svg.appendChild(el("rect", { x: glassX, y, width: glassW, height: h, fill: "#dde3e3", stroke: "#a9b3b3", "stroke-width": 1 }));
+  // klika (štítek) na straně proti pantům, ve spodní části prosklení
+  const plateX = hinge === "P" ? x + 3 : x + w - 7;
+  svg.appendChild(el("rect", { x: plateX, y: glassY + glassH * 0.75, width: 4, height: 16, rx: 1.5, fill: "#b8913f" }));
 
-  // panty na straně závěsu (podél proskleného pruhu)
+  // panty na straně závěsu
   const hingeX = hinge === "L" ? x : x + w;
   [0.15, 0.5, 0.85].forEach((f) => {
     svg.appendChild(el("rect", { x: hingeX - 2, y: y + f * h - 6, width: 4, height: 12, fill: "#8a8f95" }));
@@ -142,7 +159,8 @@ function buildDrawing(item) {
   // rozšiřovací profil (menší dveře/okno v předimenzovaném otvoru) — extra místo kolem
   const profil = item.rozsirovaci_profil_mm;
   const extraSide = profil ? profil.boky * scale : 0;
-  const extraTop = profil ? profil.nahore * scale : 0;
+  // (min. 10 px, aby byl tenký profil v nákresu vůbec vidět)
+  const extraTop = profil && profil.nahore ? Math.max(profil.nahore * scale, 10) : 0;
 
   const padLeft = PAD_LEFT + extraSide;
   const frameY = PAD_TOP + (hasPreklad ? 16 : 0) + extraTop;
@@ -190,12 +208,24 @@ function buildDrawing(item) {
   );
 
   // rozšiřovací profil — po stranách a nahoře (dole ne, dveře/okno stojí na podlaze)
-  if (profil) {
+  if (profil && extraSide) {
     svg.appendChild(
       el("rect", {
         x: padLeft - extraSide, y: frameY - extraTop, width: w + extraSide * 2, height: h + extraTop,
         fill: "none", stroke: "#c0392b", "stroke-width": 2, "stroke-dasharray": "6 4",
       })
+    );
+  } else if (profil && extraTop) {
+    // jen nahoře (bez boků) — pruh nad rámem + popisek
+    svg.appendChild(
+      el("rect", {
+        x: padLeft, y: frameY - extraTop, width: w, height: extraTop - 2.5,
+        fill: "#f6d5d1", stroke: "#c0392b", "stroke-width": 1.5, "stroke-dasharray": "5 3",
+      })
+    );
+    svg.appendChild(
+      text(padLeft + w, frameY - extraTop - 4, `rozšiř. profil ${profil.nahore} mm`, "dim-text",
+        { "text-anchor": "end", fill: "#c0392b", "font-weight": "700" })
     );
   }
 
@@ -288,7 +318,7 @@ function buildDrawing(item) {
   // výška překladu — výšková kóta (spot mark), ne délková: jen bod nad horní hranou rámu
   if (hasPreklad) {
     const markX = padLeft;
-    const markY = frameY;
+    const markY = frameY - (profil && !extraSide ? extraTop : 0);
     svg.appendChild(
       el("polygon", {
         points: `${markX},${markY} ${markX - 5},${markY - 9} ${markX + 5},${markY - 9}`,
@@ -321,7 +351,10 @@ function col(className, children) {
 function line(text, cls) {
   const d = document.createElement("div");
   if (cls) d.className = cls;
-  d.textContent = text;
+  // nevyplněná hodnota ("-----", "Komplet - -----") — jen "-----" bez popisku, světlejší
+  const empty = typeof text === "string" && text.endsWith("-----");
+  d.textContent = empty ? "-----" : text;
+  if (empty) d.classList.add("is-empty");
   return d;
 }
 
@@ -330,7 +363,15 @@ function fieldBlock(label, value) {
 }
 
 function fieldBlockLines(label, values) {
+  // když není vyplněný žádný řádek, stačí jedno "-----"
+  if (values.every((v) => String(v).endsWith("-----"))) values = ["-----"];
   return col("field-block", [line(label, "col-label"), ...values.map((v) => line(v, "col-value-sm"))]);
+}
+
+// blok s počty (žaluzie/rolety/sítě) — když jsou všechny 0, jen jeden řádek "-----"
+function countBlock(label, rows) {
+  if (!rows.some(([, v]) => v)) return fieldBlockLines(label, ["-----"]);
+  return fieldBlockLines(label, rows.map(([l, v]) => countLine(l, v)));
 }
 
 function countLine(label, value) {
@@ -391,7 +432,7 @@ function buildCard(item, sectionKey) {
   ]);
 
   // Sloupec 3 — parapet (výška / vnitřní / venkovní), purenit, zámek
-  const parapetVyskaValue = item.parapet_mm != null ? `${item.parapet_mm} mm` : "-----";
+  const parapetVyskaValue = item.parapet_mm ? `${item.parapet_mm} mm` : "-----";
   const parapetVnitrniValue = item.vnitrni_parapet_mm ? `${item.vnitrni_parapet_mm} mm` : "-----";
   const parapetVenkovniValue = item.venkovni_parapet === false ? "-----" : "200 mm"; // TODO: zatím jednotně, dokud nebudou reálná data
   const prahValue = item.bezprahove ? "Nízký Al" : "-----";
@@ -408,16 +449,11 @@ function buildCard(item, sectionKey) {
     fieldBlock("Zámek", zamekValue),
   ]);
 
-  // Sloupec 4 — žaluzie (komplet/příprava) a sítě (fixní/otevírací), každé pod sebou
+  // Sloupec 4 — žaluzie a rolety (komplet/příprava) a sítě (fixní/otevírací), každé pod sebou
   const colZaluzie = col("col col-zaluzie", [
-    fieldBlockLines("Žaluzie", [
-      countLine("Komplet", item.venk_zaluzie),
-      countLine("Příprava", item.venk_zaluzie_priprava),
-    ]),
-    fieldBlockLines("Sítě", [
-      countLine("Fixní", item.sit_fix),
-      countLine("Otevírací", item.sit_otevirani),
-    ]),
+    countBlock("Žaluzie", [["Komplet", item.venk_zaluzie], ["Příprava", item.venk_zaluzie_priprava]]),
+    countBlock("Rolety", [["Komplet", item.rolety], ["Příprava", item.rolety_priprava]]),
+    countBlock("Sítě", [["Fixní", item.sit_fix], ["Otevírací", item.sit_otevirani]]),
   ]);
 
   card.appendChild(colMain);
@@ -536,9 +572,74 @@ function renderMaterials(materialy) {
     const swatch = document.createElement("span");
     swatch.className = "swatch";
     swatch.style.background = m.barva || "transparent";
+    if (m.obrazek) swatch.style.backgroundImage = `url("${m.obrazek}")`;
     item.appendChild(swatch);
     item.appendChild(document.createTextNode(`${m.label}: ${m.hodnota}`));
     el.appendChild(item);
+  });
+}
+
+function openLightbox(src, caption) {
+  const box = document.createElement("div");
+  box.className = "lightbox";
+  const img = document.createElement("img");
+  img.src = src;
+  img.alt = caption || "";
+  const close = document.createElement("button");
+  close.className = "lightbox-close";
+  close.type = "button";
+  close.setAttribute("aria-label", "Zavřít");
+  close.textContent = "×";
+  box.append(img, close);
+  if (caption) {
+    const cap = document.createElement("div");
+    cap.className = "lightbox-caption";
+    cap.textContent = caption;
+    box.appendChild(cap);
+  }
+  const onKey = (e) => { if (e.key === "Escape") hide(); };
+  function hide() {
+    box.remove();
+    document.removeEventListener("keydown", onKey);
+    document.body.style.overflow = "";
+  }
+  // zavře křížek, Esc nebo klik mimo obrázek
+  box.addEventListener("click", (e) => { if (e.target !== img) hide(); });
+  document.addEventListener("keydown", onKey);
+  document.body.style.overflow = "hidden";
+  document.body.appendChild(box);
+}
+
+// dekory — skupiny vedle sebe (nadpis nad náhledy), pod obrázkem jen název (pokud je)
+function renderDecor(skupiny) {
+  const host = document.getElementById("decor");
+  if (!skupiny || !skupiny.length) { host.hidden = true; return; }
+  skupiny.forEach((g) => {
+    const group = document.createElement("div");
+    group.className = "decor-group";
+    const title = document.createElement("div");
+    title.className = "decor-label";
+    title.textContent = g.nadpis;
+    const list = document.createElement("div");
+    list.className = "decor-list";
+    (g.polozky || []).forEach((d) => {
+      const fig = document.createElement("figure");
+      fig.className = "decor-item" + (d.foto ? " decor-photo" : "");
+      // klik otevře obrázek přes celou obrazovku (lightbox), křížkem/Esc zpět
+      const img = document.createElement("img");
+      img.src = d.obrazek;
+      img.alt = d.nazev ? `Dekor ${d.nazev}` : g.nadpis;
+      img.addEventListener("click", () => openLightbox(d.obrazek, d.nazev || g.nadpis));
+      fig.appendChild(img);
+      if (d.nazev) {
+        const cap = document.createElement("figcaption");
+        cap.textContent = d.nazev;
+        fig.appendChild(cap);
+      }
+      list.appendChild(fig);
+    });
+    group.append(title, list);
+    host.appendChild(group);
   });
 }
 
@@ -548,6 +649,7 @@ function init() {
   document.getElementById("project-title").textContent = data.meta.nazev_projektu;
   document.getElementById("nzu-note").textContent = data.meta.poznamka;
   renderContact(data.meta.investor);
+  renderDecor(data.meta.dekory);
   renderMaterials(data.meta.materialy);
 
   assignDisplayIds(data);
