@@ -339,3 +339,7 @@ tagem, který CORS omezení nepodléhá.
 - 2026-10-02 — Blok Parapet: výška 0 mm se bere jako žádný parapet ("-----"), a když nejsou
   vyplněné žádné řádky bloku (Výška/Vnitřní/Venkovní), píše se jen jedno "-----" — obecně
   ve `fieldBlockLines()`, platí pro všechny víceřádkové bloky.
+- 2026-10-02 — Nákres vchodových dveří D16–D18 změněn na vzor **ROTAVA** (z katalogu):
+  plné křídlo, nahoře jedno svislé matné sklo (~40 % výšky, ~56 % šířky), pod ním menší
+  obdélníková kazeta stejné šířky, svislé tyčové madlo na straně proti pantům
+  (`drawSolidDoorLeaf()` v `app.js`). Nahrazuje předchozí vzor se dvěma skly a ozdobným čtvercem.

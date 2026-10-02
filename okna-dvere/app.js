@@ -92,40 +92,28 @@ function text(x, y, str, cls, extra) {
   return t;
 }
 
-// vchodové dveře (`plny_panel`): křídlo se dvěma matnými skly nahoře a kazetou dole,
-// klikou na straně proti pantům a značkami pantů — místo prosklení jako u oken
+// vchodové dveře (`plny_panel`) — vzor ROTAVA: plné křídlo, nahoře jedno svislé matné sklo,
+// pod ním menší obdélníková kazeta, svislé madlo na straně proti pantům a značky pantů
 function drawSolidDoorLeaf(svg, x, y, w, h, otevirani) {
   const hinge = otevirani && otevirani.endsWith("-L") ? "L" : "P";
 
-  // křídlo: nahoře dvě svislá matná skla vedle sebe, dole plný kazetový panel s ozdobným čtvercem
   svg.appendChild(el("rect", { x, y, width: w, height: h, fill: "#4a4f56", stroke: "#2b2f34", "stroke-width": 1 }));
 
-  const side = w * 0.11;
-  const gap = w * 0.1;
-  const glassY = y + h * 0.06;
-  const glassH = h * 0.46;
-  const paneW = (w - side * 2 - gap) / 2;
-  [x + side, x + side + paneW + gap].forEach((px) => {
-    svg.appendChild(el("rect", { x: px, y: glassY, width: paneW, height: glassH, fill: "#dde3e3", stroke: "#a9b3b3", "stroke-width": 1 }));
-  });
+  // sklo a kazeta mají stejnou šířku, mírně posunuté od strany madla
+  const innerW = w * 0.56;
+  const innerX = hinge === "P" ? x + w * 0.24 : x + w - w * 0.24 - innerW;
 
-  // spodní kazeta + ozdobný vystouplý čtverec se zapuštěným středem
-  const panelX = x + side;
-  const panelW = w - side * 2;
-  const panelY = glassY + glassH + h * 0.05;
-  const panelH = y + h * 0.94 - panelY;
-  const deco = { stroke: "#6c7279", "stroke-width": 1, fill: "none" };
-  svg.appendChild(el("rect", Object.assign({ x: panelX, y: panelY, width: panelW, height: panelH }, deco)));
-  const dW = panelW * 0.5;
-  const dH = Math.min(panelH * 0.55, dW * 1.1);
-  const dX = panelX + (panelW - dW) / 2;
-  const dY = panelY + (panelH - dH) / 2;
-  svg.appendChild(el("rect", Object.assign({ x: dX, y: dY, width: dW, height: dH }, deco)));
-  svg.appendChild(el("rect", Object.assign({ x: dX + dW * 0.2, y: dY + dH * 0.2, width: dW * 0.6, height: dH * 0.6 }, deco)));
+  const glassY = y + h * 0.13;
+  const glassH = h * 0.4;
+  svg.appendChild(el("rect", { x: innerX, y: glassY, width: innerW, height: glassH, fill: "#dde3e3", stroke: "#a9b3b3", "stroke-width": 1.5 }));
 
-  // klika (štítek) na straně proti pantům, ve spodní části prosklení
-  const plateX = hinge === "P" ? x + 3 : x + w - 7;
-  svg.appendChild(el("rect", { x: plateX, y: glassY + glassH * 0.75, width: 4, height: 16, rx: 1.5, fill: "#b8913f" }));
+  const panelY = y + h * 0.62;
+  const panelH = h * 0.15;
+  svg.appendChild(el("rect", { x: innerX, y: panelY, width: innerW, height: panelH, fill: "none", stroke: "#6c7279", "stroke-width": 1.5 }));
+
+  // svislé madlo (tyč) na straně proti pantům, kolem poloviny výšky
+  const barX = hinge === "P" ? x + 4 : x + w - 7;
+  svg.appendChild(el("rect", { x: barX, y: y + h * 0.4, width: 3, height: h * 0.2, rx: 1.5, fill: "#b8913f" }));
 
   // panty na straně závěsu
   const hingeX = hinge === "L" ? x : x + w;
