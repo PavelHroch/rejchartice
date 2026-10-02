@@ -255,3 +255,5 @@ tagem, který CORS omezení nepodléhá.
   `index.html` jen přesměruje na `okna-dvere/`. Úpravy se nasadí `git push` (Pages se
   přegeneruje samo za ~1 min). Remote je přes HTTPS (SSH push hlásil "Host key
   verification failed"). Uživatel vědomě souhlasil se zveřejněním kontaktu investora.
+  Obě stránky mají `<meta name="robots" content="noindex, nofollow">` — `robots.txt` v
+  podsložce projektu by vyhledávače ignorovaly (čtou ho jen z kořene domény).
