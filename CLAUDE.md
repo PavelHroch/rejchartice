@@ -343,3 +343,5 @@ tagem, který CORS omezení nepodléhá.
   plné křídlo, nahoře jedno svislé matné sklo (~40 % výšky, ~56 % šířky), pod ním menší
   obdélníková kazeta stejné šířky, svislé tyčové madlo na straně proti pantům
   (`drawSolidDoorLeaf()` v `app.js`). Nahrazuje předchozí vzor se dvěma skly a ozdobným čtvercem.
+- 2026-10-02 — Do legendy nahoře (`index.html`) přidána poznámka "Bezpečnostní sklo = např.
+  bezpečnostní fólie na vnitřní straně skla".
