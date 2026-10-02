@@ -250,3 +250,8 @@ tagem, který CORS omezení nepodléhá.
   zápis z 9.9.), pokud položka nemá `venkovni_parapet: false`. Doplněno `venkovni_parapet:
   false` ke všem čtyřem položkám v `okna_sklepni.polozky` (OS1, OS2, OS2b, OS5) — teď
   všechny tři řádky Parapet (Výška/Vnitřní/Venkovní) ukazují "-----". Ověřeno na S12.
+- 2026-10-02 — Projekt zveřejněn na GitHub Pages: repo `PavelHroch/rejchartice` (veřejné,
+  větev `main`, kořen `/`), adresa https://pavelhroch.github.io/rejchartice/ — kořenový
+  `index.html` jen přesměruje na `okna-dvere/`. Úpravy se nasadí `git push` (Pages se
+  přegeneruje samo za ~1 min). Remote je přes HTTPS (SSH push hlásil "Host key
+  verification failed"). Uživatel vědomě souhlasil se zveřejněním kontaktu investora.
