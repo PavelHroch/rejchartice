@@ -25,7 +25,6 @@ const DATA = {
     "materialy": [
       { "label": "Barva rámu", "hodnota": "Woodec oat", "barva": "#c8ad85", "obrazek": "img/woodec-oat.jpg" },
       { "label": "Barva křídla", "hodnota": "Woodec oat", "barva": "#c8ad85", "obrazek": "img/woodec-oat.jpg" },
-      { "label": "Těsnění", "hodnota": "Těsnění černé", "barva": "#1a1a1a" },
       { "label": "Barva rolety/žaluzie", "hodnota": "Bílá", "barva": "#ffffff" },
       { "label": "Parapet vnější", "hodnota": "Bílá", "barva": "#ffffff" },
       { "label": "Parapet vnitřní", "hodnota": "Bílá", "barva": "#ffffff" },
