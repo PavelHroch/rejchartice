@@ -15,7 +15,7 @@ const DATA = {
         { "nazev": "Kůra čirá", "obrazek": "img/sklo-kura.jpg", "foto": true }
       ] },
       { "nadpis": "Kování", "polozky": [
-        { "nazev": "ve zlaté / bronz barvě", "obrazek": "img/klika-interier.jpg", "foto": true }
+        { "nazev": "ve zlaté / bronz barvě", "obrazek": "img/klika-interier.jpg?v=2", "foto": true }
       ] }
     ],
     "materialy": [

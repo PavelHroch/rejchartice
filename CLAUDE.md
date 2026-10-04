@@ -397,3 +397,5 @@ tagem, který CORS omezení nepodléhá.
   klíč) — `assignDisplayIds()` v `interierove-dvere/app.js` teď podporuje `rozdeleno` /
   `stejne_cislo_jako_predchozi` stejně jako stránka oken. `zamek` = "WC (koupelnový)", nový
   filtr "WC zámek" (hledá `zamek` začínající na "WC").
+- 2026-10-04 — Obrázek kování u interiérových dveří (`interierove-dvere/img/klika-interier.jpg`)
+  nahrazen fotkou kliky s rozetou v bronzové barvě (1400 px), cesta v `data.js` má `?v=2` kvůli cache.
