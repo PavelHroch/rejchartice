@@ -11,6 +11,16 @@ Každý nástroj má vlastní podsložku (statická HTML stránka + JSON data, b
   - `data.js` — soupis oken a dveří jako `const DATA = {...}` (`okna-dvere/data.js`) — rozměry, dělení křídel, typ otevírání, doplňky. Uprav tento soubor, žádný jiný kód se měnit nemusí. (Formát je čistý JSON, jen obalený `const DATA = ... ;` kvůli `<script>` načtení bez CORS problémů.)
   - `style.css` — vzhled stránky.
   - `app.js` — vykreslovací logika (SVG nákresy, dimenze, souhrny).
+- `interierove-dvere/` — stejný typ stránky pro interiérové dveře (`index.html`, `data.js`,
+  `app.js`, `style.css`). Obrázky dekorů/klik bere z `../okna-dvere/img/` (nekopírují se).
+  Data: `dvere[]`, každá položka = jedna kombinace šířka × provedení × typ, pole
+  `sirka_kridla_mm`/`vyska_kridla_mm` (nominální křídlo, 1970), `provedeni` (`plne`/`prosklene`),
+  `typ` (`otocne`/`shrnovaci`/`zasouvaci`), `pocet`, `strana: { pravy, levy }` (jen otočné),
+  `zarubne`, `tl_zdi_mm`, `stavebni_otvor` (`{sirka_mm, vyska_mm}` nebo `null` = "dle výrobce"),
+  `polodrazkove`, `sklo`, `klika`, `zamek`, `prah`, `poznamka`. Zobrazovaná ID `I1…` se počítají
+  z pořadí. Otočné dveře s oběma stranami mají v kartě dva nákresy (pravé + levé).
+- Obě stránky mají nahoře navigaci (`.site-nav`) s odkazem na tu druhou (přes `…/index.html`,
+  aby to fungovalo i při otevření dvojklikem).
 
 ## Datový model (`okna-dvere/data.js`)
 
@@ -345,3 +355,25 @@ tagem, který CORS omezení nepodléhá.
   (`drawSolidDoorLeaf()` v `app.js`). Nahrazuje předchozí vzor se dvěma skly a ozdobným čtvercem.
 - 2026-10-02 — Do legendy nahoře (`index.html`) přidána poznámka "Bezpečnostní sklo = např.
   bezpečnostní fólie na vnitřní straně skla".
+- 2026-10-04 — Nová stránka `interierove-dvere/` (interiérové dveře) podle soupisu uživatele:
+  700 plné (P2/L2), 700 prosklené (P3/L1), 700 prosklené shrnovací (1), 800 plné (P7/L2),
+  800 prosklené (P1/L1), 800 prosklené zasouvací (2), 900 (0 ks — počet ani provedení zatím
+  neurčené). Celkem 22 ks. Tl. zdi (obložky) všude 300 mm. Rozepsáno podle běžné objednávky
+  int. dveří: obložková zárubeň, polodrážkové křídlo, výška 1970, stavební otvor orientačně
+  šířka + 100 × 2050 mm, matné sklo 2/3 výšky, klika se štítkem, zámek obyčejný klíč (BB),
+  bez prahu — vše výchozí odhady k ověření/úpravě v `data.js`. Dekory stejné jako u oken
+  (bez "Kliky okna"); z legendy vypadly žaluzie, bezpečnostní sklo, středový sloupek a NZÚ,
+  místo nich vysvětlivky k rozměru/zárubni, pravým/levým dveřím (ČSN) a typům dveří.
+  `.claude/launch.json` má druhý náhledový server `rejchartice-2` na portu 8059.
+- 2026-10-04 — I3 (700 prosklené) změněno ze shrnovacích na zasouvací (`typ: "zasouvaci"`,
+  pouzdro + obložka, mušle, sklo 2/3 výšky) — stejně jako I6. Shrnovací dveře teď nemá žádná
+  položka (filtr Shrnovací ukazuje 0, kód pro ně v `app.js` zůstal).
+- 2026-10-04 — Sklo u prosklených interiérových dveří změněno z "matné" na vzor **kůra**
+  (`sklo` u I2, I3, I5, I6 a `meta.materialy` v `interierove-dvere/data.js`).
+- 2026-10-04 — Odstraněna položka I7 (900, 0 ks) — dveře 900 nebudou. Zrušen i filtr "900"
+  v `FILTERS` (`app.js`) a zmínka o 900 v legendě (`index.html`).
+- 2026-10-04 — Rámy oken a křídla vchodových dveří se v SVG nákresech kreslí v barvě dekoru
+  místo tmavé antracitové: `FRAME_COLOR` v `app.js` se bere z `meta.materialy` (položka
+  "Barva rámu", teď Woodec oat `#c8ad85`), obrys/dělení křídel tmavší odstín `FRAME_EDGE`
+  (`darken()`). Rám je teď vyplněná plocha, sklo se kreslí přes ni — při změně barvy rámu v
+  datech se nákresy přebarví samy.
