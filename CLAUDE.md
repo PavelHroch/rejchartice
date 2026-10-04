@@ -12,7 +12,7 @@ Každý nástroj má vlastní podsložku (statická HTML stránka + JSON data, b
   - `style.css` — vzhled stránky.
   - `app.js` — vykreslovací logika (SVG nákresy, dimenze, souhrny).
 - `interierove-dvere/` — stejný typ stránky pro interiérové dveře (`index.html`, `data.js`,
-  `app.js`, `style.css`). Obrázky dekorů/klik bere z `../okna-dvere/img/` (nekopírují se).
+  `app.js`, `style.css`). Vlastní obrázky v `interierove-dvere/img/` (dekor CPL Dub divoký 3D V, sklo kůra, klika).
   Data: `dvere[]`, každá položka = jedna kombinace šířka × provedení × typ, pole
   `sirka_kridla_mm`/`vyska_kridla_mm` (nominální křídlo, 1970), `provedeni` (`plne`/`prosklene`),
   `typ` (`otocne`/`shrnovaci`/`zasouvaci`), `pocet`, `strana: { pravy, levy }` (jen otočné),
@@ -364,7 +364,6 @@ tagem, který CORS omezení nepodléhá.
   bez prahu — vše výchozí odhady k ověření/úpravě v `data.js`. Dekory stejné jako u oken
   (bez "Kliky okna"); z legendy vypadly žaluzie, bezpečnostní sklo, středový sloupek a NZÚ,
   místo nich vysvětlivky k rozměru/zárubni, pravým/levým dveřím (ČSN) a typům dveří.
-  `.claude/launch.json` má druhý náhledový server `rejchartice-2` na portu 8059.
 - 2026-10-04 — I3 (700 prosklené) změněno ze shrnovacích na zasouvací (`typ: "zasouvaci"`,
   pouzdro + obložka, mušle, sklo 2/3 výšky) — stejně jako I6. Shrnovací dveře teď nemá žádná
   položka (filtr Shrnovací ukazuje 0, kód pro ně v `app.js` zůstal).
@@ -377,3 +376,24 @@ tagem, který CORS omezení nepodléhá.
   "Barva rámu", teď Woodec oat `#c8ad85`), obrys/dělení křídel tmavší odstín `FRAME_EDGE`
   (`darken()`). Rám je teď vyplněná plocha, sklo se kreslí přes ni — při změně barvy rámu v
   datech se nákresy přebarví samy.
+- 2026-10-04 — Interiérové dveře: do náhledů nahoře (`meta.dekory`) přidány skupiny **Sklo**
+  ("Kůra čirá", `interierove-dvere/img/sklo-kura.jpg` — oříznutá fotka od uživatele) a
+  **Kování** (klika s rozetou, popisek "ve zlaté / bronz barvě", `img/klika-interier.jpg`).
+  Sklo v kartách a materiálech přejmenováno na "kůra čirá", kování v materiálech "zlatá / bronz",
+  pole `klika` u otočných dveří "klika se štítkem" → "klika s rozetou" (podle fotky).
+  Široké fotky v dekorech mají max. šířku 240 px (`.decor-photo img` v `interierove-dvere/style.css`).
+- 2026-10-04 — Interiérové dveře: dekor křídel a zárubní vyměněn z Woodec oat na **CPL Dub
+  divoký 3D V** (`interierove-dvere/img/dub-divoky-3d.jpg`, oříznutá fotka od uživatele, i v
+  `meta.materialy`, čtvereček `#b8925e` přibližně). Skupiny "Dekor foto" a "Kliky dveře"
+  (venkovní) odstraněny — stránka už nic nebere z `../okna-dvere/img/`.
+- 2026-10-04 — Z legendy interiérových dveří odstraněna vysvětlivka "Pravé / levé (ČSN)".
+- 2026-10-04 — Do legendy interiérových dveří doplněno, že tloušťka zdi/zárubní (zatím všude
+  300 mm) bude upřesněna při zaměření.
+- 2026-10-04 — Legenda interiérových dveří zkrácena na jedinou poznámku "Tloušťka zdi/zárubní
+  (zatím všude 300 mm) bude upřesněna při zaměření." — vysvětlivky běžných pojmů (rozměr,
+  obložková zárubeň, stavební otvor, polodrážkové, zasouvací/shrnovací) odstraněny jako zbytečné.
+- 2026-10-04 — WC zámek u 5 ks 700 (4 pravé + 1 levé): všechny 700 prosklené (I2, 3P/1L) +
+  1 pravé z plných. 700 plné rozděleno na I1a (1 pravé, WC) a I1b (1 pravé + 2 levé, obyčejný
+  klíč) — `assignDisplayIds()` v `interierove-dvere/app.js` teď podporuje `rozdeleno` /
+  `stejne_cislo_jako_predchozi` stejně jako stránka oken. `zamek` = "WC (koupelnový)", nový
+  filtr "WC zámek" (hledá `zamek` začínající na "WC").
