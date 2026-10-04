@@ -376,3 +376,9 @@ section.group h2 {
   color: #b9b2a6;
   font-weight: 400;
 }
+
+/* přepínání mezi nástroji (okna a dveře / interiérové dveře) */
+.site-nav { display: flex; gap: 16px; margin-bottom: 10px; font-size: 14px; }
+.site-nav a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.site-nav a:hover { text-decoration: underline; }
+.site-nav .current { color: var(--ink); font-weight: 700; }

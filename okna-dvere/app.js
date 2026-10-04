@@ -78,6 +78,18 @@ const MAX_W = 200;
 const MAX_H = 160;
 const INSET = 6;
 
+// barva rámu/křídla v nákresech = barva dekoru z `meta.materialy` ("Barva rámu"),
+// obrys o něco tmavší, ať je rám na světlém pozadí čitelný
+const FRAME_COLOR =
+  ((typeof DATA !== "undefined" && (DATA.meta.materialy || []).find((m) => m.label === "Barva rámu")) || {}).barva || "#c8ad85";
+const FRAME_EDGE = darken(FRAME_COLOR, 0.45);
+
+function darken(hex, amount) {
+  const n = parseInt(hex.slice(1), 16);
+  const ch = (shift) => Math.round(((n >> shift) & 255) * (1 - amount));
+  return "#" + [16, 8, 0].map((sh) => ch(sh).toString(16).padStart(2, "0")).join("");
+}
+
 function el(tag, attrs, children) {
   const ns = "http://www.w3.org/2000/svg";
   const node = document.createElementNS(ns, tag);
@@ -97,7 +109,7 @@ function text(x, y, str, cls, extra) {
 function drawSolidDoorLeaf(svg, x, y, w, h, otevirani) {
   const hinge = otevirani && otevirani.endsWith("-L") ? "L" : "P";
 
-  svg.appendChild(el("rect", { x, y, width: w, height: h, fill: "#4a4f56", stroke: "#2b2f34", "stroke-width": 1 }));
+  svg.appendChild(el("rect", { x, y, width: w, height: h, fill: FRAME_COLOR, stroke: FRAME_EDGE, "stroke-width": 1 }));
 
   // sklo a kazeta mají stejnou šířku, mírně posunuté od strany madla
   const innerW = w * 0.56;
@@ -109,7 +121,7 @@ function drawSolidDoorLeaf(svg, x, y, w, h, otevirani) {
 
   const panelY = y + h * 0.62;
   const panelH = h * 0.15;
-  svg.appendChild(el("rect", { x: innerX, y: panelY, width: innerW, height: panelH, fill: "none", stroke: "#6c7279", "stroke-width": 1.5 }));
+  svg.appendChild(el("rect", { x: innerX, y: panelY, width: innerW, height: panelH, fill: "none", stroke: FRAME_EDGE, "stroke-width": 1.5 }));
 
   // svislé madlo (tyč) na straně proti pantům, kolem poloviny výšky
   const barX = hinge === "P" ? x + 4 : x + w - 7;
@@ -187,11 +199,11 @@ function buildDrawing(item) {
     );
   });
 
-  // outer frame
+  // rám — plocha v barvě dekoru, sklo se kreslí přes ni (mezera INSET = viditelný profil)
   svg.appendChild(
     el("rect", {
       x: padLeft, y: frameY, width: w, height: h,
-      fill: "none", stroke: "#33383d", "stroke-width": 5,
+      fill: FRAME_COLOR, stroke: FRAME_EDGE, "stroke-width": 1.5,
     })
   );
 
@@ -239,7 +251,7 @@ function buildDrawing(item) {
     }
 
     if (i > 0) {
-      svg.appendChild(el("line", { x1: xCursor, y1: frameY, x2: xCursor, y2: frameY + h, stroke: "#33383d", "stroke-width": 3 }));
+      svg.appendChild(el("line", { x1: xCursor, y1: frameY, x2: xCursor, y2: frameY + h, stroke: FRAME_EDGE, "stroke-width": 1 }));
     }
 
     boundaries.push({ x0: xCursor, x1: xCursor + secW, mm: sec.sirka_mm });
