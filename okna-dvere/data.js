@@ -37,39 +37,15 @@ const DATA = {
   },
   "okna": [
     {
-      "id": "O1a",
+      "id": "O1",
       "nazev": "Fix",
-      "rozdeleno": true,
-      "poznamka": "přidat rozšiřovací profil 100 mm nad oknem",
-      "rozsirovaci_profil_mm": { "boky": 0, "nahore": 100 },
       "sirka_mm": 3000,
       "vyska_mm": 2200,
       "parapet_mm": 0,
       "preklad_mm": 2200,
       "plocha_m2": 6.60,
-      "pocet": 1,
-      "mistnosti": { "prizemi": 1 },
-      "deleni": [
-        { "sirka_mm": 3000, "otevirani": "FIX" }
-      ],
-      "bezpecnostni_sklo": true,
-      "purenit_cm": 20,
-      "venk_zaluzie": 0,
-      "venk_zaluzie_priprava": 0,
-      "rolety": 0,
-      "rolety_priprava": 0
-    },
-    {
-      "id": "O1b",
-      "nazev": "Fix",
-      "stejne_cislo_jako_predchozi": true,
-      "sirka_mm": 3000,
-      "vyska_mm": 2200,
-      "parapet_mm": 0,
-      "preklad_mm": 2200,
-      "plocha_m2": 6.60,
-      "pocet": 1,
-      "mistnosti": { "prizemi": 1 },
+      "pocet": 2,
+      "mistnosti": { "prizemi": 2 },
       "deleni": [
         { "sirka_mm": 3000, "otevirani": "FIX" }
       ],
