@@ -399,3 +399,6 @@ tagem, který CORS omezení nepodléhá.
   filtr "WC zámek" (hledá `zamek` začínající na "WC").
 - 2026-10-04 — Obrázek kování u interiérových dveří (`interierove-dvere/img/klika-interier.jpg`)
   nahrazen fotkou kliky s rozetou v bronzové barvě (1400 px), cesta v `data.js` má `?v=2` kvůli cache.
+- 2026-10-04 — Fix O1a/O1b sloučen zpět do jedné položky **O1** (podle bývalého O1b): 2 ks,
+  přízemí 2, bez rozšiřovacího profilu (O1a s profilem 100 mm nad oknem zrušen). Číslování
+  ostatních položek beze změny (O2a/O2b dál).
