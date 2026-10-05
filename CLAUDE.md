@@ -414,3 +414,13 @@ tagem, který CORS omezení nepodléhá.
   přes `file://`). Zbývá jen cache samotného HTML na GitHub Pages (`max-age=600`, max. ~10 min),
   tu ovlivnit nejde. Pravidlo „zvyšovat `?v=N`" ze zápisu z 2026-09-08 už neplatí (kromě
   obrázků v `data.js`, ty mají `?v=` dál ručně).
+- 2026-10-05 — Do hlavičky okna-dvere vlevo vedle názvu a kontaktu přidán malý náhled pohledů
+  domu (`data.meta.nahled_domu: { nazev, obrazek }`, `renderHouseThumb()` v `app.js`,
+  `.house-thumb`/`.head-row` v CSS, obrázek `okna-dvere/img/pohledy-domu.jpg` 2000 px).
+  Klik otevře obrázek přes celou obrazovku (stejný `openLightbox()` jako u dekorů).
+- 2026-10-05 — Navigace mezi stránkami (`.site-nav`) přesunuta na konec hlavičky (pod kontakt,
+  `margin-top` místo `margin-bottom`). Hlavička interiérových dveří sjednocena s okny: stejný
+  náhled pohledů domu vlevo (`meta.nahled_domu` odkazuje na `../okna-dvere/img/pohledy-domu.jpg`,
+  `renderHouseThumb()` zkopírováno do `interierove-dvere/app.js`, stejné CSS).
+- 2026-10-05 — Nadpis stránky oken sjednocen s interiérovými dveřmi: "Rodinný dům Rejchartice 58
+  — okna a dveře" (`meta.nazev_projektu` v `okna-dvere/data.js`).

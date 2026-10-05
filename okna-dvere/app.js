@@ -564,6 +564,16 @@ function renderContact(investor) {
     `${investor.email} · ${investor.adresa}`;
 }
 
+// malý náhled domu v hlavičce vlevo, klik ho otevře přes celou obrazovku
+function renderHouseThumb(nahled) {
+  const img = document.getElementById("house-thumb");
+  if (!nahled || !nahled.obrazek) return;
+  img.src = nahled.obrazek;
+  img.alt = nahled.nazev || "Pohledy domu";
+  img.hidden = false;
+  img.addEventListener("click", () => openLightbox(nahled.obrazek, nahled.nazev));
+}
+
 function renderMaterials(materialy) {
   const el = document.getElementById("materials");
   (materialy || []).forEach((m) => {
@@ -649,6 +659,7 @@ function init() {
   document.getElementById("project-title").textContent = data.meta.nazev_projektu;
   document.getElementById("nzu-note").textContent = data.meta.poznamka;
   renderContact(data.meta.investor);
+  renderHouseThumb(data.meta.nahled_domu);
   renderDecor(data.meta.dekory);
   renderMaterials(data.meta.materialy);
 

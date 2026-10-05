@@ -1,6 +1,6 @@
 const DATA = {
   "meta": {
-    "nazev_projektu": "Rodinný dům Rejchartice 58",
+    "nazev_projektu": "Rodinný dům Rejchartice 58 — okna a dveře",
     "poznamka": "Okna/dveře/montáž musí splňovat podmínky NZÚ (až na výjimky * - levnější profil, v nezateplené části).",
     "investor": {
       "jmeno": "Pavel Hroch",
@@ -8,6 +8,7 @@ const DATA = {
       "email": "kontakt@pavelhroch.cz",
       "adresa": "Rejchartice 58, Šumperk 787 01"
     },
+    "nahled_domu": { "nazev": "Pohledy domu", "obrazek": "img/pohledy-domu.jpg" },
     "dekory": [
       { "nadpis": "Dekor rámů", "polozky": [
         { "nazev": "Woodec oat", "obrazek": "img/woodec-oat.jpg" }

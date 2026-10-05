@@ -44,6 +44,18 @@ header.page-head .contact {
   margin-top: 4px;
 }
 header.page-head .contact b { color: var(--ink); }
+header.page-head .head-row { display: flex; align-items: center; gap: 18px; }
+header.page-head .head-text { min-width: 0; }
+.house-thumb {
+  width: 120px;
+  height: auto;
+  flex: none;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  cursor: zoom-in;
+}
+.house-thumb[hidden] { display: none; }
 
 .materials {
   max-width: 1200px;
@@ -378,7 +390,7 @@ section.group h2 {
 }
 
 /* přepínání mezi nástroji (okna a dveře / interiérové dveře) */
-.site-nav { display: flex; gap: 16px; margin-bottom: 10px; font-size: 14px; }
+.site-nav { display: flex; gap: 16px; margin-top: 14px; font-size: 14px; }
 .site-nav a { color: var(--accent); text-decoration: none; font-weight: 600; }
 .site-nav a:hover { text-decoration: underline; }
 .site-nav .current { color: var(--ink); font-weight: 700; }
