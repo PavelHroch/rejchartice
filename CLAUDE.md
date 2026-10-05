@@ -424,3 +424,6 @@ tagem, který CORS omezení nepodléhá.
   `renderHouseThumb()` zkopírováno do `interierove-dvere/app.js`, stejné CSS).
 - 2026-10-05 — Nadpis stránky oken sjednocen s interiérovými dveřmi: "Rodinný dům Rejchartice 58
   — okna a dveře" (`meta.nazev_projektu` v `okna-dvere/data.js`).
+- 2026-10-05 — Obsah hlavičky (náhled, nadpis, kontakt, navigace) zarovnán na střed stejně
+  jako zbytek stránky — `header.page-head > * { max-width: 1136px; margin: 0 auto }` v obou
+  `style.css` (pozadí a spodní linka hlavičky dál přes celou šířku).
