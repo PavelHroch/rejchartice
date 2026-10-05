@@ -404,3 +404,6 @@ tagem, který CORS omezení nepodléhá.
   ostatních položek beze změny (O2a/O2b dál).
 - 2026-10-04 — Z přehledu materiálů v hlavičce (`data.meta.materialy`) odstraněna položka
   "Těsnění: Těsnění černé".
+- 2026-10-05 — Interiérové dveře: výška stavebního otvoru opravena z 2050 na normovou
+  **2020 mm** (pro křídlo 1970) u všech otočných dveří (`stavebni_otvor.vyska_mm` v
+  `interierove-dvere/data.js`); šířka otvoru (křídlo + 100) beze změny.
