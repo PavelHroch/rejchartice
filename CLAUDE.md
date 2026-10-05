@@ -412,3 +412,5 @@ tagem, který CORS omezení nepodléhá.
   `margin-top` místo `margin-bottom`). Hlavička interiérových dveří sjednocena s okny: stejný
   náhled pohledů domu vlevo (`meta.nahled_domu` odkazuje na `../okna-dvere/img/pohledy-domu.jpg`,
   `renderHouseThumb()` zkopírováno do `interierove-dvere/app.js`, stejné CSS).
+- 2026-10-05 — Nadpis stránky oken sjednocen s interiérovými dveřmi: "Rodinný dům Rejchartice 58
+  — okna a dveře" (`meta.nazev_projektu` v `okna-dvere/data.js`).

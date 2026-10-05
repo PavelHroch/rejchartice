@@ -1,6 +1,6 @@
 const DATA = {
   "meta": {
-    "nazev_projektu": "Rodinný dům Rejchartice 58",
+    "nazev_projektu": "Rodinný dům Rejchartice 58 — okna a dveře",
     "poznamka": "Okna/dveře/montáž musí splňovat podmínky NZÚ (až na výjimky * - levnější profil, v nezateplené části).",
     "investor": {
       "jmeno": "Pavel Hroch",
