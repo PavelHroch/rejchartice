@@ -23,7 +23,7 @@ body {
 }
 
 header.page-head {
-  padding: 28px 32px 18px;
+  padding: 28px 32px 0;
   border-bottom: 1px solid var(--line);
   background: var(--panel);
 }
@@ -406,7 +406,21 @@ section.group h2 {
 }
 
 /* přepínání mezi nástroji (okna a dveře / interiérové dveře) */
-.site-nav { display: flex; gap: 16px; margin-top: 14px; font-size: 14px; }
-.site-nav a { color: var(--accent); text-decoration: none; font-weight: 600; }
-.site-nav a:hover { text-decoration: underline; }
-.site-nav .current { color: var(--ink); font-weight: 700; }
+/* navigace jako záložky (Bootstrap nav-tabs) — sedí na spodní lince hlavičky,
+   aktivní záložka má barvu pozadí stránky a "propojí" se s obsahem pod ní */
+.site-nav { display: flex; gap: 4px; margin-top: 18px; margin-bottom: -1px; font-size: 14px; }
+.site-nav a,
+.site-nav .current {
+  padding: 9px 16px;
+  border: 1px solid transparent;
+  border-radius: 6px 6px 0 0;
+  text-decoration: none;
+}
+.site-nav a { color: var(--accent); font-weight: 600; }
+.site-nav a:hover { border-color: var(--line) var(--line) transparent; background: var(--bg); }
+.site-nav .current {
+  color: var(--ink);
+  font-weight: 700;
+  background: var(--bg);
+  border-color: var(--line) var(--line) var(--bg);
+}
