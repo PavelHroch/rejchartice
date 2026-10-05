@@ -8,6 +8,7 @@ const DATA = {
       "email": "kontakt@pavelhroch.cz",
       "adresa": "Rejchartice 58, Šumperk 787 01"
     },
+    "nahled_domu": { "nazev": "Pohledy domu", "obrazek": "img/pohledy-domu.jpg" },
     "dekory": [
       { "nadpis": "Dekor rámů", "polozky": [
         { "nazev": "Woodec oat", "obrazek": "img/woodec-oat.jpg" }

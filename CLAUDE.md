@@ -404,3 +404,7 @@ tagem, který CORS omezení nepodléhá.
   ostatních položek beze změny (O2a/O2b dál).
 - 2026-10-04 — Z přehledu materiálů v hlavičce (`data.meta.materialy`) odstraněna položka
   "Těsnění: Těsnění černé".
+- 2026-10-05 — Do hlavičky okna-dvere vlevo vedle názvu a kontaktu přidán malý náhled pohledů
+  domu (`data.meta.nahled_domu: { nazev, obrazek }`, `renderHouseThumb()` v `app.js`,
+  `.house-thumb`/`.head-row` v CSS, obrázek `okna-dvere/img/pohledy-domu.jpg` 2000 px).
+  Klik otevře obrázek přes celou obrazovku (stejný `openLightbox()` jako u dekorů).

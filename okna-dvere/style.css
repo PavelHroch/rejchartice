@@ -44,6 +44,18 @@ header.page-head .contact {
   margin-top: 4px;
 }
 header.page-head .contact b { color: var(--ink); }
+header.page-head .head-row { display: flex; align-items: center; gap: 18px; }
+header.page-head .head-text { min-width: 0; }
+.house-thumb {
+  width: 120px;
+  height: auto;
+  flex: none;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  cursor: zoom-in;
+}
+.house-thumb[hidden] { display: none; }
 
 .materials {
   max-width: 1200px;
