@@ -427,3 +427,7 @@ tagem, který CORS omezení nepodléhá.
 - 2026-10-05 — Obsah hlavičky (náhled, nadpis, kontakt, navigace) zarovnán na střed stejně
   jako zbytek stránky — `header.page-head > * { max-width: 1136px; margin: 0 auto }` v obou
   `style.css` (pozadí a spodní linka hlavičky dál přes celou šířku).
+- 2026-10-05 — Navigace mezi stránkami (`.site-nav`) předělána na záložky ve stylu Bootstrap
+  nav-tabs: sedí na spodní lince hlavičky (hlavička má dole padding 0, nav `margin-bottom: -1px`),
+  aktivní záložka (`.current`) má rámeček a pozadí stránky, takže se "propojí" s obsahem pod ní;
+  ostatní záložky mají rámeček jen při najetí myší. Obě `style.css`.
