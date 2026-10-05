@@ -28,6 +28,13 @@ header.page-head {
   background: var(--panel);
 }
 
+/* obsah hlavičky zarovnaný na střed stejně jako zbytek stránky (1200 px − 2 × 32 px padding) */
+header.page-head > * {
+  max-width: 1136px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 header.page-head h1 {
   margin: 0 0 4px;
   font-size: 22px;
