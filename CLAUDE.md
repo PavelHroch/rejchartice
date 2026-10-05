@@ -407,3 +407,10 @@ tagem, který CORS omezení nepodléhá.
 - 2026-10-05 — Interiérové dveře: výška stavebního otvoru opravena z 2050 na normovou
   **2020 mm** (pro křídlo 1970) u všech otočných dveří (`stavebni_otvor.vyska_mm` v
   `interierove-dvere/data.js`); šířka otvoru (křídlo + 100) beze změny.
+- 2026-10-05 — Cache: v předchozí změně se zapomnělo zvýšit `data.js?v=N`, takže prohlížeče
+  (na adrese `…/interierove-dvere/` bez `index.html`) ukazovaly stará data. Ruční verzování
+  `?v=N` zrušeno v obou `index.html` — `style.css`, `data.js` a `app.js` se teď vkládají přes
+  `document.write` s `?t=Date.now()`, takže se načtou čerstvé při každém otevření (funguje i
+  přes `file://`). Zbývá jen cache samotného HTML na GitHub Pages (`max-age=600`, max. ~10 min),
+  tu ovlivnit nejde. Pravidlo „zvyšovat `?v=N`" ze zápisu z 2026-09-08 už neplatí (kromě
+  obrázků v `data.js`, ty mají `?v=` dál ručně).

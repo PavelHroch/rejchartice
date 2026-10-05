@@ -5,7 +5,8 @@
 <meta name="robots" content="noindex, nofollow" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Interiérové dveře — poptávka</title>
-<link rel="stylesheet" href="style.css?v=2" />
+<!-- Proti cache: CSS/JS/data se načítají s časovou značkou, takže se změny projeví hned. -->
+<script>document.write('<link rel="stylesheet" href="style.css?t=' + Date.now() + '" />');</script>
 </head>
 <body>
 
@@ -24,7 +25,10 @@
 
 <main id="main"></main>
 
-<script src="data.js?v=8"></script>
-<script src="app.js?v=4"></script>
+<script>
+  var t = Date.now();
+  document.write('<script src="data.js?t=' + t + '"><\/script>');
+  document.write('<script src="app.js?t=' + t + '"><\/script>');
+</script>
 </body>
 </html>
