@@ -408,3 +408,7 @@ tagem, který CORS omezení nepodléhá.
   domu (`data.meta.nahled_domu: { nazev, obrazek }`, `renderHouseThumb()` v `app.js`,
   `.house-thumb`/`.head-row` v CSS, obrázek `okna-dvere/img/pohledy-domu.jpg` 2000 px).
   Klik otevře obrázek přes celou obrazovku (stejný `openLightbox()` jako u dekorů).
+- 2026-10-05 — Navigace mezi stránkami (`.site-nav`) přesunuta na konec hlavičky (pod kontakt,
+  `margin-top` místo `margin-bottom`). Hlavička interiérových dveří sjednocena s okny: stejný
+  náhled pohledů domu vlevo (`meta.nahled_domu` odkazuje na `../okna-dvere/img/pohledy-domu.jpg`,
+  `renderHouseThumb()` zkopírováno do `interierove-dvere/app.js`, stejné CSS).
