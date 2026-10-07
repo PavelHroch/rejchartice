@@ -37,22 +37,22 @@ const FILTERS = [
   { key: "okna", label: "Okna", match: (it) => it.__section === "okna" },
   { key: "sklepni", label: "Sklepní okna", match: (it) => it.__section === "okna_sklepni" },
   { key: "dvere", label: "Dveře", match: (it) => it.__section === "dvere" },
-  { key: "sit_fix", label: "Síť fix", match: (it) => !!it.sit_fix },
-  { key: "sit_otevirani", label: "Síť otevírací", match: (it) => !!it.sit_otevirani },
-  { key: "zaluzie", label: "Venkovní žaluzie", match: (it) => !!it.venk_zaluzie },
-  { key: "zaluzie_priprava", label: "Příprava žaluzie", match: (it) => !!it.venk_zaluzie_priprava },
-  { key: "rolety", label: "Rolety", match: (it) => !!it.rolety },
-  { key: "rolety_priprava", label: "Příprava rolety", match: (it) => !!it.rolety_priprava },
+  { key: "sit_fix", label: "Síť fix", match: (it) => !!it.sit_fix, count: (it) => it.sit_fix },
+  { key: "sit_otevirani", label: "Síť otevírací", match: (it) => !!it.sit_otevirani, count: (it) => it.sit_otevirani },
+  { key: "zaluzie", label: "Venkovní žaluzie", match: (it) => !!it.venk_zaluzie, count: (it) => it.venk_zaluzie },
+  { key: "zaluzie_priprava", label: "Příprava žaluzie", match: (it) => !!it.venk_zaluzie_priprava, count: (it) => it.venk_zaluzie_priprava },
+  { key: "rolety", label: "Rolety", match: (it) => !!it.rolety, count: (it) => it.rolety },
+  { key: "rolety_priprava", label: "Příprava rolety", match: (it) => !!it.rolety_priprava, count: (it) => it.rolety_priprava },
   { key: "standard_profil", label: "Standardní profil", match: (it) => !it.levnejsi_profil },
   { key: "levnejsi_profil", label: "Levnější profil", match: (it) => !!it.levnejsi_profil },
   { key: "bezpecnostni_sklo", label: "Bezpečnostní sklo", match: (it) => !!it.bezpecnostni_sklo },
   { key: "vnitrni_parapet", label: "Vnitřní parapet", match: (it) => it.vnitrni_parapet_mm != null },
-  { key: "venkovni_parapet", label: "Venkovní parapet", match: (it) => it.venkovni_parapet !== false && it.parapet_mm != null && it.parapet_mm > 0 },
+  { key: "venkovni_parapet", label: "Venkovní parapet", match: (it) => it.venkovni_parapet !== false }, // stejně jako sloupec Parapet v kartě (parapetVenkovniValue)
   { key: "purenit", label: "Purenit", match: (it) => it.purenit_cm != null },
   { key: "zamek", label: "Zámek", match: (it) => !!it.zamek },
-  { key: "prizemi", label: "Přízemí", match: (it) => !!(it.mistnosti && it.mistnosti.prizemi) },
-  { key: "patro", label: "Patro", match: (it) => !!(it.mistnosti && it.mistnosti.patro) },
-  { key: "sklep", label: "Sklep", match: (it) => !!(it.mistnosti && it.mistnosti.sklep) },
+  { key: "prizemi", label: "Přízemí", match: (it) => !!(it.mistnosti && it.mistnosti.prizemi), count: (it) => it.mistnosti.prizemi },
+  { key: "patro", label: "Patro", match: (it) => !!(it.mistnosti && it.mistnosti.patro), count: (it) => it.mistnosti.patro },
+  { key: "sklep", label: "Sklep", match: (it) => !!(it.mistnosti && it.mistnosti.sklep), count: (it) => it.mistnosti.sklep },
 ];
 
 function describeOpenings(deleni) {
@@ -489,10 +489,6 @@ function buildGroup(title, items, sectionKey, poznamka) {
   return section;
 }
 
-function sum(items, field) {
-  return items.reduce((acc, it) => acc + (it[field] || 0), 0);
-}
-
 function applyFilter(activeKey) {
   document.querySelectorAll(".card").forEach((card) => {
     card.hidden = !(activeKey === "celkem" || card.dataset[activeKey] === "1");
@@ -509,7 +505,9 @@ function buildFilters(vsePocitatelne) {
 
   const buttons = [];
   FILTERS.forEach((f) => {
-    const count = sum(vsePocitatelne.filter(f.match), "pocet");
+    // filtry s vlastním počtem kusů (sítě, žaluzie, rolety, podlaží) nesčítají celé `pocet` položky,
+    // jen kolik kusů z ní daný doplněk/umístění má (např. O6: 4 ks oken, ale rolety jen 2)
+    const count = vsePocitatelne.filter(f.match).reduce((acc, it) => acc + ((f.count ? f.count(it) : it.pocet) || 0), 0);
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = f.key === "celkem" ? "filter-btn active" : "filter-btn";
