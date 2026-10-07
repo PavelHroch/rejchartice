@@ -441,3 +441,5 @@ tagem, který CORS omezení nepodléhá.
   16→24.
 - 2026-10-07 — Příprava žaluzií u O2a a O2b převedena na komplet (`venk_zaluzie: 1`,
   `venk_zaluzie_priprava: 0`) — filtry teď Venkovní žaluzie 4, Příprava žaluzie 0.
+- 2026-10-07 — Do `data.meta.materialy` přidána "Barva sítoviny: Tmavě šedá" (`#4a4d50`, hned
+  pod Barva rámu sítě).
