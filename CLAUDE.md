@@ -439,3 +439,5 @@ tagem, který CORS omezení nepodléhá.
   Filtr Venkovní parapet sjednocen s kartou: počítá každou položku, kde karta píše
   "Venkovní - 200 mm" (tj. vše bez `venkovni_parapet: false`) — přibyly O1, O11, D16–D18,
   16→24.
+- 2026-10-07 — Příprava žaluzií u O2a a O2b převedena na komplet (`venk_zaluzie: 1`,
+  `venk_zaluzie_priprava: 0`) — filtry teď Venkovní žaluzie 4, Příprava žaluzie 0.
