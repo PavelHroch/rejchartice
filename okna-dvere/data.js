@@ -30,6 +30,7 @@ const DATA = {
       { "label": "Parapet vnější", "hodnota": "Bílá", "barva": "#ffffff" },
       { "label": "Parapet vnitřní", "hodnota": "Bílá", "barva": "#ffffff" },
       { "label": "Barva rámu sítě", "hodnota": "Woodec oat", "barva": "#c8ad85", "obrazek": "img/woodec-oat.jpg" },
+      { "label": "Barva sítoviny", "hodnota": "Tmavě šedá", "barva": "#4a4d50" },
       { "label": "Kování (panty, kliky)", "hodnota": "zlaté / mosaz / bronz", "barva": "#c9a227" },
       { "label": "Skla", "hodnota": "čirá", "barva": "#dbe9ee" },
       { "label": "Sklo (vchodové dveře)", "hodnota": "kůra", "barva": "#dde3e3" }
