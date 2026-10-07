@@ -431,3 +431,11 @@ tagem, který CORS omezení nepodléhá.
   nav-tabs: sedí na spodní lince hlavičky (hlavička má dole padding 0, nav `margin-bottom: -1px`),
   aktivní záložka (`.current`) má rámeček a pozadí stránky, takže se "propojí" s obsahem pod ní;
   ostatní záložky mají rámeček jen při najetí myší. Obě `style.css`.
+- 2026-10-07 — Oprava počtů ve filtrech oken: filtry Síť fix/otevírací, Venkovní žaluzie,
+  Příprava žaluzie, Rolety, Příprava rolety a Přízemí/Patro/Sklep sčítaly celé `pocet`
+  položky, i když doplněk má jen část kusů (např. O6 = 4 ks, rolety 2 → počítalo se 4).
+  Teď mají v `FILTERS` (`app.js`) vlastní `count` = hodnota daného pole. Opraveno:
+  Síť fix 19→18, Rolety 9→5, Příprava rolety 11→6; ostatní beze změny.
+  Filtr Venkovní parapet sjednocen s kartou: počítá každou položku, kde karta píše
+  "Venkovní - 200 mm" (tj. vše bez `venkovni_parapet: false`) — přibyly O1, O11, D16–D18,
+  16→24.
