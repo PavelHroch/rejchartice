@@ -79,9 +79,9 @@ const DATA = {
       "zamek": "Ano - oboustranný",
       "purenit_cm": 20,
       "sit_otevirani": 1,
-      "venk_zaluzie": 1,
+      "venk_zaluzie": 0,
       "venk_zaluzie_priprava": 0,
-      "rolety": 0,
+      "rolety": 1,
       "rolety_priprava": 0
     },
     {
@@ -105,9 +105,9 @@ const DATA = {
       "smer_otevirani": "dovnitr",
       "purenit_cm": 20,
       "sit_otevirani": 1,
-      "venk_zaluzie": 1,
+      "venk_zaluzie": 0,
       "venk_zaluzie_priprava": 0,
-      "rolety": 0,
+      "rolety": 1,
       "rolety_priprava": 0
     },
     {
