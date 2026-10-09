@@ -443,3 +443,5 @@ tagem, který CORS omezení nepodléhá.
   `venk_zaluzie_priprava: 0`) — filtry teď Venkovní žaluzie 4, Příprava žaluzie 0.
 - 2026-10-07 — Do `data.meta.materialy` přidána "Barva sítoviny: Tmavě šedá" (`#4a4d50`, hned
   pod Barva rámu sítě).
+- 2026-10-09 — O2a a O2b: venkovní žaluzie (komplet) změněny na rolety komplet
+  (`venk_zaluzie: 0`, `rolety: 1`) — filtry teď Venkovní žaluzie 2 (jen O4), Rolety 7.
