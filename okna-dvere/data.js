@@ -24,18 +24,35 @@ const DATA = {
       ] }
     ],
     "materialy": [
-      { "label": "Barva rámu", "hodnota": "Woodec oat", "barva": "#c8ad85", "obrazek": "img/woodec-oat.jpg" },
-      { "label": "Barva křídla", "hodnota": "Woodec oat", "barva": "#c8ad85", "obrazek": "img/woodec-oat.jpg" },
+      { "label": "Barva rámu a křídla", "hodnota": "Woodec oat", "barva": "#c8ad85", "obrazek": "img/woodec-oat.jpg" },
+      { "label": "Levnější profil (sklep) — rám, křídlo, rám sítě", "hodnota": "Šedá (dle kamenného základu)", "barva": "#8f8d88" },
       { "label": "Barva rolety/žaluzie", "hodnota": "Bílá", "barva": "#ffffff" },
       { "label": "Parapet vnější", "hodnota": "Bílá", "barva": "#ffffff" },
       { "label": "Parapet vnitřní", "hodnota": "Bílá", "barva": "#ffffff" },
       { "label": "Barva rámu sítě", "hodnota": "Woodec oat", "barva": "#c8ad85", "obrazek": "img/woodec-oat.jpg" },
       { "label": "Barva sítoviny", "hodnota": "Tmavě šedá", "barva": "#4a4d50" },
+      { "label": "Těsnění", "hodnota": "Hnědá", "barva": "#b08a64" },
       { "label": "Kování (panty, kliky)", "hodnota": "zlaté / mosaz / bronz", "barva": "#c9a227" },
       { "label": "Skla", "hodnota": "čirá", "barva": "#dbe9ee" },
       { "label": "Sklo (vchodové dveře)", "hodnota": "kůra", "barva": "#dde3e3" }
     ]
   },
+  "zmeny": [
+    {
+      "datum": "2026-10-12",
+      "polozky": [
+        "Doplněna barva těsnění: hnědá.",
+        "Levnější profil (sklep, S12–S15): rám, křídlo i rám sítě v šedé barvě (dle kamenného základu).",
+        "S12: zámek oboustranný."
+      ]
+    },
+    {
+      "datum": "2026-10-09",
+      "polozky": [
+        "O2a, O2b: místo venkovních žaluzií budou rolety komplet."
+      ]
+    }
+  ],
   "okna": [
     {
       "id": "O1",
@@ -340,7 +357,7 @@ const DATA = {
           { "sirka_mm": 1000, "otevirani": "OS-P" }
         ],
         "smer_otevirani": "dovnitr",
-        "zamek": true,
+        "zamek": "Ano - oboustranný",
         "venk_zaluzie": 0,
         "venk_zaluzie_priprava": 0,
         "rolety": 0,

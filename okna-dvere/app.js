@@ -78,11 +78,15 @@ const MAX_W = 200;
 const MAX_H = 160;
 const INSET = 6;
 
-// barva rámu/křídla v nákresech = barva dekoru z `meta.materialy` ("Barva rámu"),
+// barva rámu/křídla v nákresech = barva dekoru z `meta.materialy` ("Barva rámu a křídla"),
 // obrys o něco tmavší, ať je rám na světlém pozadí čitelný
 const FRAME_COLOR =
-  ((typeof DATA !== "undefined" && (DATA.meta.materialy || []).find((m) => m.label === "Barva rámu")) || {}).barva || "#c8ad85";
+  ((typeof DATA !== "undefined" && (DATA.meta.materialy || []).find((m) => m.label === "Barva rámu a křídla")) || {}).barva || "#c8ad85";
 const FRAME_EDGE = darken(FRAME_COLOR, 0.45);
+// položky s `levnejsi_profil` (sklep) mají rám v jiné barvě — z `meta.materialy` ("Levnější profil…")
+const CHEAP_FRAME_COLOR =
+  ((typeof DATA !== "undefined" && (DATA.meta.materialy || []).find((m) => m.label.startsWith("Levnější profil"))) || {}).barva || FRAME_COLOR;
+const CHEAP_FRAME_EDGE = darken(CHEAP_FRAME_COLOR, 0.45);
 
 function darken(hex, amount) {
   const n = parseInt(hex.slice(1), 16);
@@ -135,6 +139,8 @@ function drawSolidDoorLeaf(svg, x, y, w, h, otevirani) {
 }
 
 function buildDrawing(item) {
+  const frameColor = item.levnejsi_profil ? CHEAP_FRAME_COLOR : FRAME_COLOR;
+  const frameEdge = item.levnejsi_profil ? CHEAP_FRAME_EDGE : FRAME_EDGE;
   const sirka = item.sirka_mm;
   const vyska = item.vyska_mm;
 
@@ -203,7 +209,7 @@ function buildDrawing(item) {
   svg.appendChild(
     el("rect", {
       x: padLeft, y: frameY, width: w, height: h,
-      fill: FRAME_COLOR, stroke: FRAME_EDGE, "stroke-width": 1.5,
+      fill: frameColor, stroke: frameEdge, "stroke-width": 1.5,
     })
   );
 
@@ -251,7 +257,7 @@ function buildDrawing(item) {
     }
 
     if (i > 0) {
-      svg.appendChild(el("line", { x1: xCursor, y1: frameY, x2: xCursor, y2: frameY + h, stroke: FRAME_EDGE, "stroke-width": 1 }));
+      svg.appendChild(el("line", { x1: xCursor, y1: frameY, x2: xCursor, y2: frameY + h, stroke: frameEdge, "stroke-width": 1 }));
     }
 
     boundaries.push({ x0: xCursor, x1: xCursor + secW, mm: sec.sirka_mm });
@@ -651,6 +657,38 @@ function renderDecor(skupiny) {
   });
 }
 
+// přehled změn — jedna kartička na den, nejnovější nahoře
+function buildChanges(zmeny) {
+  const section = document.createElement("section");
+  section.className = "changes";
+  const h2 = document.createElement("h2");
+  h2.className = "top-title";
+  h2.textContent = "Změny";
+  section.appendChild(h2);
+  const list = document.createElement("div");
+  list.className = "changes-list";
+  [...zmeny]
+    .sort((a, b) => b.datum.localeCompare(a.datum))
+    .forEach((zmena) => {
+      const card = document.createElement("div");
+      card.className = "change-card";
+      const date = document.createElement("div");
+      date.className = "change-date";
+      const [r, m, d] = zmena.datum.split("-").map(Number);
+      date.textContent = `${d}. ${m}. ${r}`;
+      const ul = document.createElement("ul");
+      (zmena.polozky || []).forEach((txt) => {
+        const li = document.createElement("li");
+        li.textContent = txt;
+        ul.appendChild(li);
+      });
+      card.append(date, ul);
+      list.appendChild(card);
+    });
+  section.appendChild(list);
+  return section;
+}
+
 function init() {
   const data = DATA;
 
@@ -660,6 +698,7 @@ function init() {
   renderHouseThumb(data.meta.nahled_domu);
   renderDecor(data.meta.dekory);
   renderMaterials(data.meta.materialy);
+  if (data.zmeny && data.zmeny.length) document.getElementById("changes").appendChild(buildChanges(data.zmeny));
 
   assignDisplayIds(data);
 
@@ -673,6 +712,10 @@ function init() {
   ];
 
   const main = document.getElementById("main");
+  const filtersTitle = document.createElement("h2");
+  filtersTitle.className = "top-title";
+  filtersTitle.textContent = "Filtry";
+  main.appendChild(filtersTitle);
   main.appendChild(buildFilters(vsePocitatelne));
   if (okna.length) main.appendChild(buildGroup("Okna", okna, "okna"));
   if (sklepniPolozky.length) {
