@@ -214,7 +214,8 @@ main {
   padding: 10px 32px 60px;
 }
 
-section.group h2 {
+section.group h2,
+.top-title {
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -414,4 +415,94 @@ section.group h2 {
   font-weight: 700;
   background: var(--bg);
   border-color: var(--line) var(--line) var(--bg);
+}
+
+/* horní řádek: vlevo Změny na 1/4, vpravo Legenda (dekory, materiály, poznámky) na 3/4 */
+.top-row {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 28px;
+  align-items: start;
+}
+.top-row .top-title { margin-top: 24px; }
+.top-row .decor,
+.top-row .materials,
+.top-row .legend {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.top-row .decor { margin-top: 0; }
+
+/* materiály (pod sebou) vlevo, poznámky vedle */
+.legend-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+  margin-top: 18px;
+}
+.top-row .legend-row .materials {
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 6px;
+}
+.legend-row .legend-card { margin-top: 0; }
+.legend-card.decor-card { margin-top: 0; padding: 14px 20px 16px; }
+@media (max-width: 900px) {
+  .legend-row { grid-template-columns: 1fr; }
+}
+
+/* bílé karty v Legendě (Barvy, Poznámky) */
+.legend-card {
+  margin: 18px 0 0;
+  padding: 12px 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.notes ul { margin: 0; padding: 0; list-style: none; }
+.notes li + li { margin-top: 8px; }
+.notes b { color: var(--ink); }
+@media (max-width: 900px) {
+  .top-row { grid-template-columns: 1fr; gap: 0; }
+}
+
+/* přehled změn — kartička na každý den, nejnovější nahoře */
+.changes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.change-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  padding: 12px 20px;
+}
+
+.change-date {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.change-card ul {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 1.55;
 }

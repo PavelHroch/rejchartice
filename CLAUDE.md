@@ -445,3 +445,43 @@ tagem, který CORS omezení nepodléhá.
   pod Barva rámu sítě).
 - 2026-10-09 — O2a a O2b: venkovní žaluzie (komplet) změněny na rolety komplet
   (`venk_zaluzie: 0`, `rolety: 1`) — filtry teď Venkovní žaluzie 2 (jen O4), Rolety 7.
+- 2026-10-12 — Do `data.meta.materialy` přidáno "Těsnění: Hnědé" (`#b08a64`, před Kování).
+- 2026-10-12 — Do `data.meta.materialy` přidán "Levnější profil (sklep) — rám, křídlo, rám sítě: Šedá (dle
+  kamenného základu)" (`#8f8d88`, přibližný odstín). Nákresy položek s `levnejsi_profil` mají rám/křídla v této šedé (`CHEAP_FRAME_COLOR` v `app.js`, bere
+  se z položky `materialy`, jejíž label začíná "Levnější profil"; ostatní dál `FRAME_COLOR`).
+- 2026-10-12 — S12 zámek "Ano - oboustranný" (dřív `true`/"Ano"), stejně jako S13/S14.
+- 2026-10-12 — Nad filtry přibyla sekce **Změny** (`buildChanges()` v `app.js`, `.changes`/`.change-card`
+  v CSS): kartička na každý den s datem a odrážkami obsahových změn, nejnovější nahoře. Data jsou v
+  `data.js` jako top-level pole `zmeny: [{ datum: "YYYY-MM-DD", polozky: ["…"] }]` — při další
+  obsahové změně přidat položku do dnešního dne nebo nový den (pořadí v poli nevadí, řadí se podle data).
+- 2026-10-12 — Horní část stránky oken přeskládána do dvou sloupců (`.top-row` v `index.html`/CSS): vlevo
+  (3/4) nadpis **Legenda** + dekory, materiály a poznámky, vpravo (1/4) **Změny** (`#changes`, už ne
+  nad filtry v `main`). Pod 900 px šířky jsou pod sebou. Nadpisy obou sloupců mají třídu `.top-title`
+  (stejný styl jako nadpisy sekcí Okna/Dveře).
+- 2026-10-12 — Čtyři poznámky pod materiály (NZÚ, Komplet/Příprava žaluzie, Bezpečnostní sklo, středový
+  sloupek) sjednoceny do jednoho bílého bloku s odrážkami (`ul.notes` v `index.html`, `.notes` v CSS)
+  místo čtyř samostatných `.legend` divů s různými styly; upozornění na sloupek zůstalo červené
+  (`.note-warning`). Text NZÚ se dál plní z `data.meta.poznamka` do `#nzu-note`.
+- 2026-10-12 — Blok poznámek (`.notes`) má nadpis "Poznámky" a nové pořadí: Bezpečnostní sklo, středový
+  sloupek (už ne červeně, jen tučně — `.note-warning` zrušeno), NZÚ, Komplet/Příprava žaluzie na konci.
+- 2026-10-12 — Sloupce v `.top-row` prohozeny: Změny vlevo (1/4), Legenda vpravo (3/4). Na mobilu jsou
+  Změny nahoře nad Legendou.
+- 2026-10-12 — V Legendě jsou materiály/barvy pod sebou (jedna na řádek) a blok Poznámky vedle nich
+  (`.legend-row` v `index.html`/CSS); pod 900 px pod sebou.
+- 2026-10-12 — Barvy v Legendě jsou teď ve stejné bílé kartě s nadpisem "Barvy" jako Poznámky (společná
+  třída `.legend-card` v CSS).
+- 2026-10-12 — Fotky dekorů/klik v Legendě jsou taky v jedné bílé kartě (`.legend-card.decor-card`).
+- 2026-10-12 — Poznámka o bezpečnostním skle bez „např.“: "Bezpečnostní sklo = bezpečnostní fólie na vnitřní
+  straně skla." (`index.html`) (do Změn se nepíše —
+  uživatel nechce, jde jen o upřesnění formulace).
+- 2026-10-12 — Materiály: "Barva rámu" + "Barva křídla" sloučeny do jednoho řádku "Barva rámu a křídla:
+  Woodec oat" (`FRAME_COLOR` v `app.js` teď hledá tento label), "Levnější profil (sklep)…" posunut hned za něj.
+- 2026-10-12 — V poznámce o žaluziích začíná "Příprava = …" na novém řádku (`<br>`).
+- 2026-10-12 — Nad filtry přidán nadpis "Filtry" (`h2.top-title` v `init()` v `app.js`, stejný styl jako
+  Legenda/Změny/Okna) — dává i mezeru pod Legendou.
+- 2026-10-12 — Těsnění: "Hnědé" → "Hnědá" (i ve Změnách).
+- 2026-10-12 — Poznámky v Legendě bez odrážek (`.notes ul { list-style: none }`).
+- 2026-10-12 — "Příprava = …" je v Poznámkách samostatný odstavec (vlastní `<li>` místo `<br>`).
+- 2026-10-12 — Do Změn zpětně doplněny kartičky 7. 10. (O2a/O2b příprava žaluzií → komplet) a 9. 10.
+  (O2a/O2b žaluzie komplet → rolety komplet).
+- 2026-10-12 — Kartička 7. 10. ze Změn zase odebrána (uživatel ji nechce, mezikrok) — zůstává jen 9. 10. a 12. 10.
