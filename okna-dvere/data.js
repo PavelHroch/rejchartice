@@ -31,7 +31,7 @@ const DATA = {
       { "label": "Parapet vnitřní", "hodnota": "Bílá", "barva": "#ffffff" },
       { "label": "Barva rámu sítě", "hodnota": "Woodec oat", "barva": "#c8ad85", "obrazek": "img/woodec-oat.jpg" },
       { "label": "Barva sítoviny", "hodnota": "Tmavě šedá", "barva": "#4a4d50" },
-      { "label": "Těsnění", "hodnota": "Hnědá", "barva": "#b08a64" },
+      { "label": "Těsnění", "hodnota": "Hnědá, sklep šedá/černá", "barva": "#b08a64" },
       { "label": "Kování (panty, kliky)", "hodnota": "zlaté / mosaz / bronz", "barva": "#c9a227" },
       { "label": "Skla", "hodnota": "čirá", "barva": "#dbe9ee" },
       { "label": "Sklo (vchodové dveře)", "hodnota": "kůra", "barva": "#dde3e3" }
@@ -41,7 +41,7 @@ const DATA = {
     {
       "datum": "2026-10-12",
       "polozky": [
-        "Doplněna barva těsnění: hnědá.",
+        "Doplněna barva těsnění: hnědá, sklep (S12–S15) šedá/černá.",
         "Levnější profil (sklep, S12–S15): rám, křídlo i rám sítě v šedé barvě (dle kamenného základu).",
         "S12: zámek oboustranný."
       ]
