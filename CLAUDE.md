@@ -485,3 +485,4 @@ tagem, který CORS omezení nepodléhá.
 - 2026-10-12 — Do Změn zpětně doplněny kartičky 7. 10. (O2a/O2b příprava žaluzií → komplet) a 9. 10.
   (O2a/O2b žaluzie komplet → rolety komplet).
 - 2026-10-12 — Kartička 7. 10. ze Změn zase odebrána (uživatel ji nechce, mezikrok) — zůstává jen 9. 10. a 12. 10.
+- 2026-10-15 — Těsnění: "Hnědá, sklep šedá/černá" (materiály i Změny k 12. 10.; čtvereček dál hnědý).
