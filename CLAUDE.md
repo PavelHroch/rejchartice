@@ -486,3 +486,5 @@ tagem, který CORS omezení nepodléhá.
   (O2a/O2b žaluzie komplet → rolety komplet).
 - 2026-10-12 — Kartička 7. 10. ze Změn zase odebrána (uživatel ji nechce, mezikrok) — zůstává jen 9. 10. a 12. 10.
 - 2026-10-15 — Těsnění: "Hnědá, sklep šedá/černá" (materiály i Změny k 12. 10.; čtvereček dál hnědý).
+- 2026-10-20 — Příprava rolet u O3 (2), O6 (2), O7 (2) převedena na rolety komplet (`rolety` 2/4/5,
+  `rolety_priprava` 0) — filtry teď Rolety 13, Příprava rolety 0. Zapsáno i do Změn (20. 10.).

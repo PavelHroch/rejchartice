@@ -39,6 +39,12 @@ const DATA = {
   },
   "zmeny": [
     {
+      "datum": "2026-10-20",
+      "polozky": [
+        "O3, O6, O7: místo přípravy rolet budou rolety komplet."
+      ]
+    },
+    {
       "datum": "2026-10-12",
       "polozky": [
         "Doplněna barva těsnění: hnědá, sklep (S12–S15) šedá/černá.",
@@ -147,8 +153,8 @@ const DATA = {
       "sit_fix": 1,
       "venk_zaluzie": 0,
       "venk_zaluzie_priprava": 0,
-      "rolety": 0,
-      "rolety_priprava": 2
+      "rolety": 2,
+      "rolety_priprava": 0
     },
     {
       "id": "O4",
@@ -218,8 +224,8 @@ const DATA = {
       "sit_fix": 4,
       "venk_zaluzie": 0,
       "venk_zaluzie_priprava": 0,
-      "rolety": 2,
-      "rolety_priprava": 2
+      "rolety": 4,
+      "rolety_priprava": 0
     },
     {
       "id": "O7",
@@ -241,8 +247,8 @@ const DATA = {
       "sit_fix": 5,
       "venk_zaluzie": 0,
       "venk_zaluzie_priprava": 0,
-      "rolety": 3,
-      "rolety_priprava": 2
+      "rolety": 5,
+      "rolety_priprava": 0
     },
     {
       "id": "O8",
