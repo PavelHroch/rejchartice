@@ -488,3 +488,7 @@ tagem, který CORS omezení nepodléhá.
 - 2026-10-15 — Těsnění: "Hnědá, sklep šedá/černá" (materiály i Změny k 12. 10.; čtvereček dál hnědý).
 - 2026-10-20 — Příprava rolet u O3 (2), O6 (2), O7 (2) převedena na rolety komplet (`rolety` 2/4/5,
   `rolety_priprava` 0) — filtry teď Rolety 13, Příprava rolety 0. Zapsáno i do Změn (20. 10.).
+- 2026-10-22 — Zrušeny filtry "Příprava žaluzie" a "Příprava rolety" (`FILTERS` v `app.js`). V Poznámkách
+  Legendy (`index.html`) nahrazen popis Komplet/Příprava žaluzií jedním řádkem "Žaluzie / rolety" — motorové,
+  podomítkový kastlík, chceme „hloupé“ motory bez wifi (Sonoff/Shelly dodatečně). Řádky "Příprava" v kartách
+  zůstaly. Zapsáno do Změn (22. 10.).

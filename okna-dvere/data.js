@@ -39,6 +39,12 @@ const DATA = {
   },
   "zmeny": [
     {
+      "datum": "2026-10-22",
+      "polozky": [
+        "Žaluzie i rolety: chceme „hloupé“ motory bez wifi (s možností dodatečně zapojit Sonoff/Shelly)."
+      ]
+    },
+    {
       "datum": "2026-10-20",
       "polozky": [
         "O3, O6, O7: místo přípravy rolet budou rolety komplet."
