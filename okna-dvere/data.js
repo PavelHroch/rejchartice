@@ -27,6 +27,7 @@ const DATA = {
       { "label": "Barva rámu a křídla", "hodnota": "Woodec oat", "barva": "#c8ad85", "obrazek": "img/woodec-oat.jpg" },
       { "label": "Levnější profil (sklep) — rám, křídlo, rám sítě", "hodnota": "Šedá (dle kamenného základu)", "barva": "#8f8d88" },
       { "label": "Barva rolety/žaluzie", "hodnota": "Bílá", "barva": "#ffffff" },
+      { "label": "Vodící lišty rolet", "hodnota": "Woodec oat (dekor oken)", "barva": "#c8ad85", "obrazek": "img/woodec-oat.jpg" },
       { "label": "Parapet vnější", "hodnota": "Bílá", "barva": "#ffffff" },
       { "label": "Parapet vnitřní", "hodnota": "Bílá", "barva": "#ffffff" },
       { "label": "Barva rámu sítě", "hodnota": "Woodec oat", "barva": "#c8ad85", "obrazek": "img/woodec-oat.jpg" },
@@ -41,7 +42,8 @@ const DATA = {
     {
       "datum": "2026-10-22",
       "polozky": [
-        "Žaluzie i rolety: chceme „hloupé“ motory bez wifi (s možností dodatečně zapojit Sonoff/Shelly)."
+        "Žaluzie i rolety: chceme „hloupé“ motory bez wifi (s možností dodatečně zapojit Sonoff/Shelly).",
+        "Vodící lišty rolet v dekoru oken (Woodec oat)."
       ]
     },
     {

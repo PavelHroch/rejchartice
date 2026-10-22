@@ -492,3 +492,5 @@ tagem, který CORS omezení nepodléhá.
   Legendy (`index.html`) nahrazen popis Komplet/Příprava žaluzií jedním řádkem "Žaluzie / rolety" — motorové,
   podomítkový kastlík, chceme „hloupé“ motory bez wifi (Sonoff/Shelly dodatečně). Řádky "Příprava" v kartách
   zůstaly. Zapsáno do Změn (22. 10.).
+- 2026-10-22 — Do `data.meta.materialy` přidány "Vodící lišty rolet: Woodec oat (dekor oken)" (s texturou,
+  hned pod Barva rolety/žaluzie). Zapsáno do Změn (22. 10.).
