@@ -40,12 +40,6 @@ const DATA = {
   },
   "zmeny": [
     {
-      "datum": "2026-10-26",
-      "polozky": [
-        "D16 a D17: výška dveří 2100 mm (dřív 2200)."
-      ]
-    },
-    {
       "datum": "2026-10-22",
       "polozky": [
         "Žaluzie i rolety: chceme „hloupé“ motory bez wifi (s možností dodatečně zapojit Sonoff/Shelly).",
