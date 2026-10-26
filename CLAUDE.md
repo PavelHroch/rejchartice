@@ -494,3 +494,6 @@ tagem, který CORS omezení nepodléhá.
   zůstaly. Zapsáno do Změn (22. 10.).
 - 2026-10-22 — Do `data.meta.materialy` přidány "Vodící lišty rolet: Woodec oat (dekor oken)" (s texturou,
   hned pod Barva rolety/žaluzie). Zapsáno do Změn (22. 10.).
+- 2026-10-26 — D16 a D17: výška dveří 2100 mm (dřív 2200), plochy přepočteny (D16 2.31 m², D17 2.10 m²).
+  U D16 zvětšen horní rozšiřovací profil 200 → 300 mm, aby dveře dál vyplnily otvor 130×240 cm.
+  Zapsáno do Změn (26. 10.).

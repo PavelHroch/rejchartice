@@ -40,6 +40,12 @@ const DATA = {
   },
   "zmeny": [
     {
+      "datum": "2026-10-26",
+      "polozky": [
+        "D16 a D17: výška dveří 2100 mm (dřív 2200)."
+      ]
+    },
+    {
       "datum": "2026-10-22",
       "polozky": [
         "Žaluzie i rolety: chceme „hloupé“ motory bez wifi (s možností dodatečně zapojit Sonoff/Shelly).",
@@ -451,13 +457,13 @@ const DATA = {
       "id": "D16",
       "nazev": "Vchodové hlavní přízemí",
       "poznamka": "do otvoru 130×240 cm — přidat rozšiřovací profil",
-      "rozsirovaci_profil_mm": { "boky": 100, "nahore": 200 },
+      "rozsirovaci_profil_mm": { "boky": 100, "nahore": 300 },
       "montaz_vnitrni_hrana": true,
       "bezprahove": true,
       "plny_panel": true,
       "sirka_mm": 1100,
-      "vyska_mm": 2200,
-      "plocha_m2": 2.42,
+      "vyska_mm": 2100,
+      "plocha_m2": 2.31,
       "pocet": 1,
       "mistnosti": { "prizemi": 1 },
       "strana_domu": { "pravy": 1 },
@@ -478,8 +484,8 @@ const DATA = {
       "bezprahove": true,
       "plny_panel": true,
       "sirka_mm": 1000,
-      "vyska_mm": 2200,
-      "plocha_m2": 2.20,
+      "vyska_mm": 2100,
+      "plocha_m2": 2.10,
       "pocet": 2,
       "mistnosti": { "prizemi": 2 },
       "strana_domu": { "levy": 1, "pravy": 1 },
