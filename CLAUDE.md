@@ -506,3 +506,4 @@ tagem, který CORS omezení nepodléhá.
   a galerie 6 vizualizací (půdorys s vybavením, herna ×2, vstup/šatna, sociálky ×2). Bez vazby na
   okna/dveře — žádné odkazy v navigaci.
 - 2026-11-19 — Byt školka: u každé fotky v galerii vpravo vedle názvu ikona ke stažení (`a.dl` s atributem `download`).
+- 2026-11-19 — Byt školka: blok **Poznámky** (odrážky, `ul.notes`) mezi dokumentací a vizualizacemi — stavební poznámky (omítky, SDK příčky/strop, přístavba z Porothermu, skladba podlahy, koupelny). Další body = přidat `<li>` v `byt-skolka/index.html`.
