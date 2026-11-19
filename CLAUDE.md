@@ -19,7 +19,11 @@ Každý nástroj má vlastní podsložku (statická HTML stránka + JSON data, b
   `zarubne`, `tl_zdi_mm`, `stavebni_otvor` (`{sirka_mm, vyska_mm}` nebo `null` = "dle výrobce"),
   `polodrazkove`, `sklo`, `klika`, `zamek`, `prah`, `poznamka`. Zobrazovaná ID `I1…` se počítají
   z pořadí. Otočné dveře s oběma stranami mají v kartě dva nákresy (pravé + levé).
-- Obě stránky mají nahoře navigaci (`.site-nav`) s odkazem na tu druhou (přes `…/index.html`,
+- `byt-skolka/` — samostatná stránka „Byt školka" (jen `index.html` s vloženým CSS/JS, bez
+  `data.js`): projektová dokumentace ke stažení (`pdf/D-02-1NP.pdf`, `pdf/D-03-2NP.pdf` — DSP,
+  bez dodatečných změn jako sociálky) a galerie vizualizací (`img/`, klik = lightbox). Záměrně
+  NENÍ provázaná s okny/dveřmi (žádná společná navigace), dostupná jen přes `…/byt-skolka/`.
+- Stránky oken a interiérových dveří mají nahoře navigaci (`.site-nav`) s odkazem na tu druhou (přes `…/index.html`,
   aby to fungovalo i při otevření dvojklikem).
 
 ## Datový model (`okna-dvere/data.js`)
@@ -497,3 +501,8 @@ tagem, který CORS omezení nepodléhá.
 - 2026-10-26 — D16 a D17: výška dveří 2100 mm (dřív 2200), plochy přepočteny (D16 2.31 m², D17 2.10 m²).
   Rozšiřovací profil u D16 zůstává 200 mm nahoře (zvětšení na 300 uživatel nechtěl — původní
   výška 2200 byla chyba v datech, ne změna otvoru). Zapsáno do Změn (26. 10.).
+- 2026-11-19 — Nová samostatná stránka `byt-skolka/` (Byt školka): PDF půdorysy 1.NP a 2.NP ke stažení
+  s poznámkou, že jde o dokumentaci ke stavebnímu povolení bez dodatečných změn (např. sociálky),
+  a galerie 6 vizualizací (půdorys s vybavením, herna ×2, vstup/šatna, sociálky ×2). Bez vazby na
+  okna/dveře — žádné odkazy v navigaci.
+- 2026-11-19 — Byt školka: u každé fotky v galerii vpravo vedle názvu ikona ke stažení (`a.dl` s atributem `download`).
