@@ -507,3 +507,8 @@ tagem, který CORS omezení nepodléhá.
   okna/dveře — žádné odkazy v navigaci.
 - 2026-11-19 — Byt školka: u každé fotky v galerii vpravo vedle názvu ikona ke stažení (`a.dl` s atributem `download`).
 - 2026-11-19 — Byt školka: blok **Poznámky** (odrážky, `ul.notes`) mezi dokumentací a vizualizacemi — stavební poznámky (omítky, SDK příčky/strop, přístavba z Porothermu, skladba podlahy, koupelny). Další body = přidat `<li>` v `byt-skolka/index.html`.
+- 2026-11-19 — Byt školka: blok **Fotky ze stavby** pod vizualizacemi (`img/stav-1…3.jpg`, popisky „Současný stav — N“), stejná galerie s lightboxem a ikonou ke stažení.
+- 2026-11-19 — Byt školka: do Poznámek přidáno „Vyspárování a zarovnání kamene“.
+- 2026-11-19 — Byt školka: do Fotek ze stavby přidány `img/stav-4.jpg` a `stav-5.jpg` (Současný stav — 4, 5).
+- 2026-11-19 — Byt školka: ve zvětšené fotce (lightbox) jde listovat šipkami ‹ › (tlačítka po stranách, klávesy ←/→, swipe na mobilu) v rámci stejné galerie; popisek ukazuje pořadí „(N / celkem)“.
+- 2026-11-19 — Byt školka: do hlavičky přidán stejný kontakt na investora jako u oken (natvrdo v `index.html`, stránka nemá `data.js` — při změně kontaktu upravit i tady).
