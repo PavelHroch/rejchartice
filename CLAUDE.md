@@ -19,7 +19,11 @@ Každý nástroj má vlastní podsložku (statická HTML stránka + JSON data, b
   `zarubne`, `tl_zdi_mm`, `stavebni_otvor` (`{sirka_mm, vyska_mm}` nebo `null` = "dle výrobce"),
   `polodrazkove`, `sklo`, `klika`, `zamek`, `prah`, `poznamka`. Zobrazovaná ID `I1…` se počítají
   z pořadí. Otočné dveře s oběma stranami mají v kartě dva nákresy (pravé + levé).
-- Obě stránky mají nahoře navigaci (`.site-nav`) s odkazem na tu druhou (přes `…/index.html`,
+- `byt-skolka/` — samostatná stránka „Byt školka" (jen `index.html` s vloženým CSS/JS, bez
+  `data.js`): projektová dokumentace ke stažení (`pdf/D-02-1NP.pdf`, `pdf/D-03-2NP.pdf` — DSP,
+  bez dodatečných změn jako sociálky) a galerie vizualizací (`img/`, klik = lightbox). Záměrně
+  NENÍ provázaná s okny/dveřmi (žádná společná navigace), dostupná jen přes `…/byt-skolka/`.
+- Stránky oken a interiérových dveří mají nahoře navigaci (`.site-nav`) s odkazem na tu druhou (přes `…/index.html`,
   aby to fungovalo i při otevření dvojklikem).
 
 ## Datový model (`okna-dvere/data.js`)
@@ -486,3 +490,8 @@ tagem, který CORS omezení nepodléhá.
   (O2a/O2b žaluzie komplet → rolety komplet).
 - 2026-10-12 — Kartička 7. 10. ze Změn zase odebrána (uživatel ji nechce, mezikrok) — zůstává jen 9. 10. a 12. 10.
 - 2026-10-15 — Těsnění: "Hnědá, sklep šedá/černá" (materiály i Změny k 12. 10.; čtvereček dál hnědý).
+- 2026-11-19 — Nová samostatná stránka `byt-skolka/` (Byt školka): PDF půdorysy 1.NP a 2.NP ke stažení
+  s poznámkou, že jde o dokumentaci ke stavebnímu povolení bez dodatečných změn (např. sociálky),
+  a galerie 6 vizualizací (půdorys s vybavením, herna ×2, vstup/šatna, sociálky ×2). Bez vazby na
+  okna/dveře — žádné odkazy v navigaci.
+- 2026-11-19 — Byt školka: u každé fotky v galerii vpravo vedle názvu ikona ke stažení (`a.dl` s atributem `download`).
