@@ -27,6 +27,7 @@ const DATA = {
       { "label": "Barva rámu a křídla", "hodnota": "Woodec oat", "barva": "#c8ad85", "obrazek": "img/woodec-oat.jpg" },
       { "label": "Levnější profil (sklep) — rám, křídlo, rám sítě", "hodnota": "Šedá (dle kamenného základu)", "barva": "#8f8d88" },
       { "label": "Barva rolety/žaluzie", "hodnota": "Bílá", "barva": "#ffffff" },
+      { "label": "Vodící lišty rolet", "hodnota": "Woodec oat (dekor oken)", "barva": "#c8ad85", "obrazek": "img/woodec-oat.jpg" },
       { "label": "Parapet vnější", "hodnota": "Bílá", "barva": "#ffffff" },
       { "label": "Parapet vnitřní", "hodnota": "Bílá", "barva": "#ffffff" },
       { "label": "Barva rámu sítě", "hodnota": "Woodec oat", "barva": "#c8ad85", "obrazek": "img/woodec-oat.jpg" },
@@ -38,6 +39,25 @@ const DATA = {
     ]
   },
   "zmeny": [
+    {
+      "datum": "2026-10-26",
+      "polozky": [
+        "D16 a D17: výška dveří 2100 mm (dřív 2200)."
+      ]
+    },
+    {
+      "datum": "2026-10-22",
+      "polozky": [
+        "Žaluzie i rolety: chceme „hloupé“ motory bez wifi (s možností dodatečně zapojit Sonoff/Shelly).",
+        "Vodící lišty rolet v dekoru oken (Woodec oat)."
+      ]
+    },
+    {
+      "datum": "2026-10-20",
+      "polozky": [
+        "O3, O6, O7: místo přípravy rolet budou rolety komplet."
+      ]
+    },
     {
       "datum": "2026-10-12",
       "polozky": [
@@ -147,8 +167,8 @@ const DATA = {
       "sit_fix": 1,
       "venk_zaluzie": 0,
       "venk_zaluzie_priprava": 0,
-      "rolety": 0,
-      "rolety_priprava": 2
+      "rolety": 2,
+      "rolety_priprava": 0
     },
     {
       "id": "O4",
@@ -218,8 +238,8 @@ const DATA = {
       "sit_fix": 4,
       "venk_zaluzie": 0,
       "venk_zaluzie_priprava": 0,
-      "rolety": 2,
-      "rolety_priprava": 2
+      "rolety": 4,
+      "rolety_priprava": 0
     },
     {
       "id": "O7",
@@ -241,8 +261,8 @@ const DATA = {
       "sit_fix": 5,
       "venk_zaluzie": 0,
       "venk_zaluzie_priprava": 0,
-      "rolety": 3,
-      "rolety_priprava": 2
+      "rolety": 5,
+      "rolety_priprava": 0
     },
     {
       "id": "O8",
@@ -442,8 +462,8 @@ const DATA = {
       "bezprahove": true,
       "plny_panel": true,
       "sirka_mm": 1100,
-      "vyska_mm": 2200,
-      "plocha_m2": 2.42,
+      "vyska_mm": 2100,
+      "plocha_m2": 2.31,
       "pocet": 1,
       "mistnosti": { "prizemi": 1 },
       "strana_domu": { "pravy": 1 },
@@ -464,8 +484,8 @@ const DATA = {
       "bezprahove": true,
       "plny_panel": true,
       "sirka_mm": 1000,
-      "vyska_mm": 2200,
-      "plocha_m2": 2.20,
+      "vyska_mm": 2100,
+      "plocha_m2": 2.10,
       "pocet": 2,
       "mistnosti": { "prizemi": 2 },
       "strana_domu": { "levy": 1, "pravy": 1 },
