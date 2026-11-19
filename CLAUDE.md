@@ -512,3 +512,4 @@ tagem, který CORS omezení nepodléhá.
 - 2026-11-19 — Byt školka: do Fotek ze stavby přidány `img/stav-4.jpg` a `stav-5.jpg` (Současný stav — 4, 5).
 - 2026-11-19 — Byt školka: ve zvětšené fotce (lightbox) jde listovat šipkami ‹ › (tlačítka po stranách, klávesy ←/→, swipe na mobilu) v rámci stejné galerie; popisek ukazuje pořadí „(N / celkem)“.
 - 2026-11-19 — Byt školka: do hlavičky přidán stejný kontakt na investora jako u oken (natvrdo v `index.html`, stránka nemá `data.js` — při změně kontaktu upravit i tady).
+- 2026-11-19 — Byt školka: poznámka upravena na „Přístavba (šatna) bude nově vyzděná z Porothermu“.
