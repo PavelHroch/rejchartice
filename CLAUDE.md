@@ -19,11 +19,16 @@ Každý nástroj má vlastní podsložku (statická HTML stránka + JSON data, b
   `zarubne`, `tl_zdi_mm`, `stavebni_otvor` (`{sirka_mm, vyska_mm}` nebo `null` = "dle výrobce"),
   `polodrazkove`, `sklo`, `klika`, `zamek`, `prah`, `poznamka`. Zobrazovaná ID `I1…` se počítají
   z pořadí. Otočné dveře s oběma stranami mají v kartě dva nákresy (pravé + levé).
+- `pudorysy-upravy/` — záložka „Půdorysy úpravy" (jen `index.html` + `img/`), sdílí
+  `../okna-dvere/style.css` a z `../okna-dvere/data.js` bere kontakt a náhled domu. Půdorys
+  1.NP s úpravami (`img/pudorys-1np.webp`), 2.NP vizualizace (`img/vizualizace-2np.webp`) a půdorys
+  2.NP (`img/pudorys-2np.webp`), vše originál 2000 px: klik = lightbox, další klik na
+  obrázek = plné rozlišení se scrollováním. Další půdorys = zkopírovat `<section class="plan">`.
 - `byt-skolka/` — samostatná stránka „Byt školka" (jen `index.html` s vloženým CSS/JS, bez
   `data.js`): projektová dokumentace ke stažení (`pdf/D-02-1NP.pdf`, `pdf/D-03-2NP.pdf` — DSP,
   bez dodatečných změn jako sociálky) a galerie vizualizací (`img/`, klik = lightbox). Záměrně
   NENÍ provázaná s okny/dveřmi (žádná společná navigace), dostupná jen přes `…/byt-skolka/`.
-- Stránky oken a interiérových dveří mají nahoře navigaci (`.site-nav`) s odkazem na tu druhou (přes `…/index.html`,
+- Stránky oken, půdorysů úprav a interiérových dveří mají nahoře navigaci (`.site-nav`, pořadí Okna → Interiérové dveře → Půdorysy úpravy) s odkazy na ty ostatní (přes `…/index.html`,
   aby to fungovalo i při otevření dvojklikem).
 
 ## Datový model (`okna-dvere/data.js`)
@@ -515,3 +520,7 @@ tagem, který CORS omezení nepodléhá.
 - 2026-11-19 — Byt školka: poznámka upravena na „Přístavba (šatna) bude nově vyzděná z Porothermu“.
 - 2026-11-19 — Byt školka: oprava zarovnání nadpisu v hlavičce (`h1` měl `margin: 0 0 4px`, který přebíjel centrování `margin: auto` z `header.page-head > *`).
 - 2026-11-19 — Byt školka: popisky fotek ze stavby — Herna — 1/2, Kuchyň / sociálky, Přístavba (šatna) — 1/2 (dřív „Současný stav — N“).
+- 2026-11-23 — Nová záložka **Půdorysy úpravy** (`pudorysy-upravy/`) — půdorys 1.NP s úpravami v plné kvalitě, lightbox s přepnutím na plné rozlišení. Odkaz přidán do `.site-nav` v `okna-dvere/` i `interierove-dvere/`.
+- 2026-11-23 — Půdorysy úpravy: přidány 2.NP — vizualizace a Půdorys 2.NP (pod 1.NP).
+- 2026-11-23 — Záložka Půdorysy úpravy přesunuta na třetí místo (za Interiérové dveře).
+- 2026-11-23 — Půdorysy úpravy: vyměněn obrázek Půdorys 2.NP (`img/pudorys-2np.webp`, `?v=2` kvůli cache).
