@@ -22,7 +22,7 @@ Každý nástroj má vlastní podsložku (statická HTML stránka + JSON data, b
 - `pudorysy-upravy/` — záložka „Půdorysy úpravy" (jen `index.html` + `img/`), sdílí
   `../okna-dvere/style.css` a z `../okna-dvere/data.js` bere kontakt a náhled domu. Půdorys
   1.NP s úpravami (`img/pudorys-1np.webp`), 2.NP vizualizace (`img/vizualizace-2np.webp`) a půdorys
-  2.NP (`img/pudorys-2np.webp`), vše originál 2000 px: klik = lightbox, další klik na
+  2.NP (`img/pudorys-2np.webp`), půdorys podkroví (`img/pudorys-podkrovi.webp`), vše originál 2000 px: klik = lightbox, další klik na
   obrázek = plné rozlišení se scrollováním. Další půdorys = zkopírovat `<section class="plan">`.
 - `byt-skolka/` — samostatná stránka „Byt školka" (jen `index.html` s vloženým CSS/JS, bez
   `data.js`): projektová dokumentace ke stažení (`pdf/D-02-1NP.pdf`, `pdf/D-03-2NP.pdf` — DSP,
@@ -524,3 +524,5 @@ tagem, který CORS omezení nepodléhá.
 - 2026-11-23 — Půdorysy úpravy: přidány 2.NP — vizualizace a Půdorys 2.NP (pod 1.NP).
 - 2026-11-23 — Záložka Půdorysy úpravy přesunuta na třetí místo (za Interiérové dveře).
 - 2026-11-23 — Půdorysy úpravy: vyměněn obrázek Půdorys 2.NP (`img/pudorys-2np.webp`, `?v=2` kvůli cache).
+- 2026-11-23 — Půdorysy úpravy: přidán Půdorys podkroví (pod 2.NP).
+- 2026-11-23 — Půdorysy úpravy: Půdorys 2.NP a 2.NP vizualizace vedle sebe (půdorys vlevo, `.plan-row`, pod 900 px pod sebou).
