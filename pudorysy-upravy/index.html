@@ -16,6 +16,8 @@
     padding: 12px;
   }
   .plan-card img { display: block; width: 100%; height: auto; cursor: zoom-in; border-radius: 4px; }
+  .plan-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+  @media (max-width: 900px) { .plan-row { grid-template-columns: 1fr; gap: 0; } }
   .plan-caption { margin-top: 8px; color: var(--muted); font-size: 14px; }
   /* v lightboxu: klik na obrázek = plné rozlišení se scrollováním */
   .lightbox.zoomable img { cursor: zoom-in; }
@@ -48,17 +50,27 @@
     </div>
   </section>
 
-  <section class="plan">
-    <h2 class="top-title">2.NP — vizualizace</h2>
-    <div class="plan-card">
-      <img src="img/vizualizace-2np.webp?v=1" alt="Vizualizace 2.NP" data-caption="2.NP — vizualizace" />
-    </div>
-  </section>
+  <!-- 2.NP: půdorys a vizualizace vedle sebe (pod 900 px pod sebou) -->
+  <div class="plan-row">
+    <section class="plan">
+      <h2 class="top-title">Půdorys 2.NP</h2>
+      <div class="plan-card">
+        <img src="img/pudorys-2np.webp?v=2" alt="Půdorys 2.NP s úpravami" data-caption="Půdorys 2.NP" />
+      </div>
+    </section>
+
+    <section class="plan">
+      <h2 class="top-title">2.NP — vizualizace</h2>
+      <div class="plan-card">
+        <img src="img/vizualizace-2np.webp?v=1" alt="Vizualizace 2.NP" data-caption="2.NP — vizualizace" />
+      </div>
+    </section>
+  </div>
 
   <section class="plan">
-    <h2 class="top-title">Půdorys 2.NP</h2>
+    <h2 class="top-title">Půdorys podkroví</h2>
     <div class="plan-card">
-      <img src="img/pudorys-2np.webp?v=2" alt="Půdorys 2.NP s úpravami" data-caption="Půdorys 2.NP" />
+      <img src="img/pudorys-podkrovi.webp?v=1" alt="Půdorys podkroví s úpravami" data-caption="Půdorys podkroví" />
     </div>
   </section>
 </main>
