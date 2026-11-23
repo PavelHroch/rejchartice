@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Půdorysy úpravy — Rejchartice 58</title>
+<!-- Sdílí vzhled se stránkou oken (../okna-dvere/style.css). -->
+<script>document.write('<link rel="stylesheet" href="../okna-dvere/style.css?t=' + Date.now() + '" />');</script>
+<style>
+  .plan { margin: 0 0 32px; }
+  .plan-card {
+    background: var(--panel, #fff);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px;
+  }
+  .plan-card img { display: block; width: 100%; height: auto; cursor: zoom-in; border-radius: 4px; }
+  .plan-caption { margin-top: 8px; color: var(--muted); font-size: 14px; }
+  /* v lightboxu: klik na obrázek = plné rozlišení se scrollováním */
+  .lightbox.zoomable img { cursor: zoom-in; }
+  .lightbox.zoomed { display: block; overflow: auto; padding: 56px 16px 24px; }
+  .lightbox.zoomed img { max-width: none; max-height: none; cursor: zoom-out; }
+  .lightbox.zoomed .lightbox-close { position: fixed; }
+  .lightbox.zoomed .lightbox-caption { display: none; }
+</style>
+</head>
+<body>
+
+<header class="page-head">
+  <div class="head-row">
+    <img class="house-thumb" id="house-thumb" alt="Pohledy domu" hidden />
+    <div class="head-text">
+      <h1 id="project-title">Rodinný dům Rejchartice 58 — půdorysy úpravy</h1>
+      <div class="contact" id="contact"></div>
+    </div>
+  </div>
+  <nav class="site-nav"><a href="../okna-dvere/index.html">Okna a dveře</a><a href="../interierove-dvere/index.html">Interiérové dveře</a><span class="current">Půdorysy úpravy</span></nav>
+</header>
+
+<main id="main">
+  <!-- Další půdorys = zkopírovat <section class="plan"> a přidat obrázek do img/ -->
+  <section class="plan">
+    <h2 class="top-title">Půdorys 1.NP</h2>
+    <div class="plan-card">
+      <img src="img/pudorys-1np.webp?v=1" alt="Půdorys 1.NP s úpravami" data-caption="Půdorys 1.NP" />
+      <div class="plan-caption">Klikni pro zvětšení přes celou obrazovku, dalším klikem na obrázek plné rozlišení.</div>
+    </div>
+  </section>
+
+  <section class="plan">
+    <h2 class="top-title">2.NP — vizualizace</h2>
+    <div class="plan-card">
+      <img src="img/vizualizace-2np.webp?v=1" alt="Vizualizace 2.NP" data-caption="2.NP — vizualizace" />
+    </div>
+  </section>
+
+  <section class="plan">
+    <h2 class="top-title">Půdorys 2.NP</h2>
+    <div class="plan-card">
+      <img src="img/pudorys-2np.webp?v=2" alt="Půdorys 2.NP s úpravami" data-caption="Půdorys 2.NP" />
+    </div>
+  </section>
+</main>
+
+<script>
+  document.write('<script src="../okna-dvere/data.js?t=' + Date.now() + '"><\/script>');
+</script>
+<script>
+  function openLightbox(src, caption, zoomable) {
+    var box = document.createElement("div");
+    box.className = "lightbox" + (zoomable ? " zoomable" : "");
+    var img = document.createElement("img");
+    img.src = src;
+    img.alt = caption || "";
+    var close = document.createElement("button");
+    close.className = "lightbox-close";
+    close.type = "button";
+    close.setAttribute("aria-label", "Zavřít");
+    close.textContent = "×";
+    box.append(img, close);
+    if (caption) {
+      var cap = document.createElement("div");
+      cap.className = "lightbox-caption";
+      cap.textContent = caption;
+      box.appendChild(cap);
+    }
+    function onKey(e) { if (e.key === "Escape") hide(); }
+    function hide() {
+      box.remove();
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    }
+    box.addEventListener("click", function (e) {
+      if (e.target !== img) { hide(); return; }
+      if (zoomable) box.classList.toggle("zoomed");
+    });
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    document.body.appendChild(box);
+  }
+
+  // kontakt a náhled domu ze stejných dat jako stránka oken
+  if (typeof DATA !== "undefined" && DATA.meta) {
+    var inv = DATA.meta.investor;
+    if (inv) {
+      document.getElementById("contact").innerHTML =
+        "<b>Kontakt na investora</b> — " + inv.jmeno + " · " + inv.telefon + " · " + inv.email + " · " + inv.adresa;
+    }
+    var n = DATA.meta.nahled_domu;
+    if (n && n.obrazek) {
+      var t = document.getElementById("house-thumb");
+      var src = "../okna-dvere/" + n.obrazek;
+      t.src = src;
+      t.alt = n.nazev || "Pohledy domu";
+      t.hidden = false;
+      t.addEventListener("click", function () { openLightbox(src, n.nazev); });
+    }
+  }
+
+  document.querySelectorAll(".plan-card img").forEach(function (img) {
+    img.addEventListener("click", function () { openLightbox(img.src, img.dataset.caption + " — klikni na obrázek pro plné rozlišení", true); });
+  });
+</script>
+</body>
+</html>
