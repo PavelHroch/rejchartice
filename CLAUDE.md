@@ -526,3 +526,4 @@ tagem, který CORS omezení nepodléhá.
 - 2026-11-23 — Půdorysy úpravy: vyměněn obrázek Půdorys 2.NP (`img/pudorys-2np.webp`, `?v=2` kvůli cache).
 - 2026-11-23 — Půdorysy úpravy: přidán Půdorys podkroví (pod 2.NP).
 - 2026-11-23 — Půdorysy úpravy: Půdorys 2.NP a 2.NP vizualizace vedle sebe (půdorys vlevo, `.plan-row`, pod 900 px pod sebou).
+- 2026-11-23 — Půdorysy úpravy: vyměněn obrázek Půdorys 1.NP (`img/pudorys-1np.webp`, `?v=2` kvůli cache).
